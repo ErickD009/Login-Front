@@ -1,0 +1,56 @@
+﻿.menuCygnus {
+    background-color: #0a6cb3 !important;
+}
+
+.nombreSistema {
+    color: white !important;
+}
+
+.nombreEmpleado {
+    /*font-size: 22px !important;*/
+    font-size: 1.1rem !important;
+    font-weight: 400;
+}
+
+.d-block {
+    color: white !important;
+}
+
+.navCygnus {
+    background-color: #0c4c8b !important;
+    color: white !important;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.datosCygnus {
+    color: #cc5224 !important;
+    font-size: 16px !important;
+}
+
+.accionCygnus {
+    background-color: #cc5224 !important;
+    color: white !important;
+}
+
+.puntero:hover {
+    cursor: pointer;
+}
+
+.info {
+    padding: 5px 5px 5px 12px !important;
+}
+
+.selEmpresaUsuario {
+    width: 300px !important;
+    display: inline !important;
+    height: 30px !important;
+    padding: 0px 10px !important;
+    font-size: 14px !important;
+}
+
+.azulCygnus {
+    color: #0a6cb3 !important;
+}
