@@ -158,57 +158,86 @@ function login() {
 
 }
 
-//function login1() {
-
-//    var user = document.getElementById('txtUsuario').value;
-//    var pass = document.getElementById('txtPass').value;
-//    /*var sistema = 5; // cambiar id para el sistema que se cree*/
-
-//    const data = new FormData();
-//    data.append('USR_LOGIN', user);
-//    data.append('USR_PASSWORD', pass);
-//    /*data.append('sistema', sistema);*/
-
-//    //var url = host() + 'Usuario/validaUsuario';
-//    //var url = origen() + 'Usuario/validaUsuario';
-//   /* var url = generico() + 'Usuario/validaUsuario ';*/
-//    var url = host() + 'Usuario/Usuario_Traer_Sistemas';
-//    /*console.log(url, data);*/
-
-
-
-
-//    fetch(url, {
-//        method: 'POST',
-//        headers: {
-//            'Content-Type': 'application/json'
-//        },
-//        body: JSON.stringify(data)
-//    })
-//        .then(response => response.text())
-//        .then(data => console.log(data))
-//        .catch(error => console.error(error));
-
-//}
-
 function enviarRut() {
-    
+
+    const selectEmpresas = document.getElementById("selEmpresas");
+    selectEmpresas.innerHTML = "";
+
     var USR_LOGIN = document.getElementById('txtRut').value;
-    var url = host() + 'Usuario/Usuario_Traer_Empresas?rut=' + USR_LOGIN;
-    var valores = new FormData();
-    valores.append('usrlogin', USR_LOGIN);
-   
-    fetch(url, {
+    USR_LOGIN = USR_LOGIN.replace(/\./g, '').replace(/\-/g, '');
+    if (USR_LOGIN.trim().length < 8) {
+        var divMensaje = document.getElementById("divMensaje");
+        divMensaje.innerHTML = "Por favor, ingrese un rut válido.";
+        divMensaje.style.display = "block";
+        return;
+    }
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var url = host() + 'Usuario/Usuario_Traer_Empresas'
+    var raw = JSON.stringify({
+        'usrlogin': USR_LOGIN
+    });
+    var requestOptions = {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }//,
-        //|body: JSON.stringify('usrlogin': '16147519k')
-    })
-        .then(response => response.text())
-        .then(data => console.log(data))
-        .catch(error => console.error(error));  
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch(url, requestOptions)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error " + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            //console.log(data);
+            const selectEmpresas = document.getElementById("selEmpresas");
+            data.forEach(empresa => {
+                const option = document.createElement("option");
+                option.text = empresa.nombreCliente;
+                selectEmpresas.add(option);
+            });
+        })
+        .catch(error => {
+            var divMensaje = document.getElementById("divMensaje");
+            if (error instanceof TypeError) {
+                divMensaje.innerHTML = "No se pudo conectar con el servidor.";
+            } else if (error instanceof Error && error.message.includes("400")) {
+                divMensaje.innerHTML = "Rut no encontrado.";
+            } else {
+                divMensaje.innerHTML = "Ocurrió un error inesperado.";
+            }
+            divMensaje.style.display = "block";
+        }); 
 }
+
+const myModal = document.getElementById("Modal");
+
+//  Limpiar Modal
+function limpiarModal() {
+    
+    document.getElementById('txtRut').value = '';
+    document.getElementById('selEmpresas').innerHTML = '';
+    document.getElementById('divMensaje').style.display = 'none';
+    document.getElementById('divMensaje1').style.display = 'none';
+  }
+
+// Borrar Mensaje de error del input Rut
+window.onload = function() {
+    var USR_LOGIN = document.getElementById("txtRut");
+    USR_LOGIN.addEventListener("input", function() {
+        var rut = USR_LOGIN.value;
+        if (rut.trim().length >= 8) {
+            var divMensaje = document.getElementById("divMensaje");
+            divMensaje.style.display = "none";
+        }
+    });
+};
+
 
 function home() {
     var rut = document.getElementById('rut').value;

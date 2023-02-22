@@ -9,7 +9,7 @@
 <head>
   <meta name="viewport" content="width=device-width" />
   <title>Grupo Cygnus | Template</title>
-
+  
   <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
   <!--<link href="~/Content/Site.css" rel="stylesheet" />-->
   <!--<link href="~/Content/layout.css"/>-->
@@ -34,7 +34,9 @@
   <div>
     <img alt="Grupo Cygnus" src="~/Content/images/logo.png" class="center-block" />
   </div>
+
                                                   <!-- Login -->
+
   <div class="container well contenedor">
     <div class="row">
       <div class="col text-center">
@@ -73,25 +75,34 @@
         <div class="modalContenido">
           <div class="modalheader">
             <h5 class="modal-title text-center w-100" style="color: #fffefe;" id="modalTitulo">Recuperacion de Contraseña</h5>
-            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">x</button>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" onclick="limpiarModal()">x</button>
           </div>
           <div class="modal-body">
             <div class="input-group">
-                <p>Escriba su rut, sin puntos ni guión e incluya el dígito verificador.</p>
-                    <input type="text" class="inputRut" id="txtRut" placeholder="Ejemplo: 12345678k">&nbsp;
+                <p>Ingrese su rut e incluya el dígito verificador.</p>
+                <input type="text" class="inputRut" id="txtRut" placeholder="Ejemplo: 12345678k">&nbsp;
                 <div class="input-group-append">
-                    <button class="btn btn-primary boton_rut" type="button" onclick="enviarRut()" >Buscar</button>
+                    <button class="btn btn-primary rounded-start boton_rut" type="button" id="btnEnviarRut" onclick="enviarRut()">Buscar</button>
                 </div>
             </div>
             <br>
+            <div class="row">
+                <div id="divMensaje" class="col-md-12 alert alert-danger" style="display:none;"></div>
+                <div id="divMensaje1" class="col-md-12 alert alert-danger" style="display:none;"></div>
+                <div class="clearfix"></div>
+            </div>
             <div class="input-group">
                 <p>Indique la empresa a la que está asignado</p><br />
             </div>
-                <textarea class="areaTexto"></textarea>
+            <div class="row">
+                <div class="col-md-12">
+                    <select id="selEmpresas" class="selEmpresas" size="5"></select>
+                </div>
+            </div>
           </div>
           <div class="modalFooter">
-                    <button type="button" class="btn btn-primary" onclick="enviarRut()">Recuperar Contraseña</button>
-                </div>
+            <button type="button" class="btn btn-primary" onclick="recuperarContraseña()">Recuperar Contraseña</button>
+          </div>
         </div>
       </div>
     </div>

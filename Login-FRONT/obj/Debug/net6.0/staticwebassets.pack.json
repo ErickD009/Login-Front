@@ -8429,6 +8429,10 @@
       "PackagePath": "staticwebassets\\Content\\themes\\base\\minified\\jquery.ui.theme.min.css"
     },
     {
+      "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\css\\login.css",
       "PackagePath": "staticwebassets\\css\\login.css"
     },

@@ -83,10 +83,14 @@
     border-bottom-left-radius: .3rem;
 }
 
-.boton_rut {
-    border-top-left-radius: 0 !important;
-    border-bottom-left-radius: 0!important;
-}
+
+
+.btn-primary.boton_rut {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px !important;
+    border-top-left-radius: 6px !important;
+  }
 
 @media (max-width:1141px) {
     .footer {
@@ -380,9 +384,26 @@
     }
 }
 
+.selEmpresas {
+    width:100%;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
 .inputRut {
     display: block;
-    width: 84%;
+    width: 83%;
     height: 38px;
     padding: 6px 12px;
     font-size: 14px;
@@ -401,31 +422,97 @@
 
 @media (max-width:495px) {
     .inputRut {
-        width: 83%;
-    }
-}
-
-@media (max-width:470px) {
-    .inputRut {
         width: 82%;
     }
 }
 
-@media (max-width:445px) {
+@media (max-width:467px) {
     .inputRut {
         width: 81%;
     }
 }
 
-@media (max-width:425px) {
+@media (max-width:445px) {
     .inputRut {
         width: 80%;
     }
 }
 
-@media (max-width:406px) {
+@media (max-width:425px) {
     .inputRut {
-        width: auto;
+        width: 79%;
+    }
+}
+
+@media (max-width:407px) {
+    .inputRut {
+        width: 78%  ;
+    }
+}
+
+@media (max-width:391px) {
+    .inputRut {
+        width: 77%;
+    }
+}
+
+@media (max-width:377px) {
+    .inputRut {
+        width: 76%;
+    }
+}
+
+@media (max-width:366px) {
+    .inputRut {
+        width: 75%;
+    }
+}
+
+@media (max-width:350px) {
+    .inputRut {
+        width: 74%;
+    }
+}
+
+@media (max-width:338px) {
+    .inputRut {
+        width: 73%;
+    }
+}
+
+@media (max-width:328px) {
+    .inputRut {
+        width: 72%;
+    }
+}
+
+@media (max-width:318px) {
+    .inputRut {
+        width: 71%;
+    }
+}
+
+@media (max-width:309px) {
+    .inputRut {
+        width: 70%;
+    }
+}
+
+@media (max-width:300px) {
+    .inputRut {
+        width: 69%;
+    }
+}
+
+@media (max-width:292px) {
+    .inputRut {
+        width: 68%;
+    }
+}
+
+@media (max-width:285px) {
+    .inputRut {
+        width: 67%;
     }
 }
 
@@ -512,4 +599,5 @@
 @media (max-width:450px) {
     .center-block {
         width: 120px !important;
-    }
+    }
+}
