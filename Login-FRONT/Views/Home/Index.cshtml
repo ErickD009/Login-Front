@@ -36,7 +36,8 @@
   </div>
 
                                                   <!-- Login -->
-
+  <input type="hidden" id="hdRsp" value="0" />
+  <input type="hidden" id="Correo" value="0" />
   <div class="container well contenedor">
     <div class="row">
       <div class="col text-center">
@@ -60,7 +61,7 @@
         <Button ID="btnLoad" class="btn btn-primary center-block" onclick="login(); return false">Ingresar</Button>
       </div>
       <div class="col text-center">
-        <a href="#" class="btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#Modal">Recuperar Contraseña</a>
+        <a href="#" class="btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#Modal">¿Ha olvidado su contraseña?</a>
       </div>
     </form>
     <div id="alertPass" class="alert alert-warning" style="display:none; width: 400px; margin: 0 auto;">
@@ -82,17 +83,21 @@
                 <p>Ingrese su rut e incluya el dígito verificador.</p>
                 <input type="text" class="inputRut" id="txtRut" placeholder="Ejemplo: 12345678k">&nbsp;
                 <div class="input-group-append">
-                    <button class="btn btn-primary rounded-start boton_rut" type="button" id="btnEnviarRut" onclick="enviarRut()">Buscar</button>
+                    <button class="btn btn-primary rounded-start boton_rut" type="button" id="btnEnviarRut" onclick="enviarRut()">Buscar</button>                  
                 </div>
+                
             </div>
             <br>
             <div class="row">
                 <div id="divMensaje" class="col-md-12 alert alert-danger" style="display:none;"></div>
-                <div id="divMensaje1" class="col-md-12 alert alert-danger" style="display:none;"></div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="row">
+                <div id="divMensaje2" class="col-md-12 alert alert-danger" style="display:none;"></div>
                 <div class="clearfix"></div>
             </div>
             <div class="input-group">
-                <p>Indique la empresa a la que está asignado</p><br />
+                <p>Indique la empresa a la que está asignado.</p><br />
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -101,7 +106,7 @@
             </div>
           </div>
           <div class="modalFooter">
-            <button type="button" class="btn btn-primary" onclick="recuperarContraseña()">Recuperar Contraseña</button>
+            <button type="button" ID="btnRecuperar" class="btn btn-primary" onclick="recuperarPass()">Recuperar Contraseña</button>
           </div>
         </div>
       </div>

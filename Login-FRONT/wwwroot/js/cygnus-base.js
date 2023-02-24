@@ -159,7 +159,7 @@ function login() {
 }
 
 function enviarRut() {
-
+    
     const selectEmpresas = document.getElementById("selEmpresas");
     selectEmpresas.innerHTML = "";
 
@@ -176,6 +176,7 @@ function enviarRut() {
     myHeaders.append("Content-Type", "application/json");
 
     var url = host() + 'Usuario/Usuario_Traer_Empresas'
+    var url2 = host() + 'Usuario/Usuario_Traer_Correo'
     var raw = JSON.stringify({
         'usrlogin': USR_LOGIN
     });
@@ -194,12 +195,15 @@ function enviarRut() {
             return response.json();
         })
         .then(data => {
-            //console.log(data);
+            console.log(data);
             const selectEmpresas = document.getElementById("selEmpresas");
             data.forEach(empresa => {
                 const option = document.createElement("option");
                 option.text = empresa.nombreCliente;
+                option.value = empresa.cli_autoid;
+                if (empresa.marcaRespuestaCorrecta === 'X') document.getElementById('hdRsp').value = empresa.cli_autoid;
                 selectEmpresas.add(option);
+                //console.log(empresa.cli_autoid);
             });
         })
         .catch(error => {
@@ -213,11 +217,82 @@ function enviarRut() {
             }
             divMensaje.style.display = "block";
         }); 
+
+    
+    fetch(url2, requestOptions)
+        .then(response => response.json())
+        //.then(result => (console.log(result)))
+        .then(result => {
+            //console.log(result);
+             document.getElementById('Correo').value = result.usr_mail;
+        })
+        .catch(error => console.log('error', error));
+
+
+    var divMensaje = document.getElementById("divMensaje");
+    divMensaje.style.display = "none";
+    var divMensaje2 = document.getElementById("divMensaje2");
+    divMensaje2.style.display = "none";
 }
 
-const myModal = document.getElementById("Modal");
+
+function recuperarPass() {
+
+    var url = host() + 'Usuario/Usuario_Enviar_Correo_Recuperacion'
+
+    const selectedOption = document.getElementById("selEmpresas").options.selectedIndex;
+    if (selectedOption === -1) {
+        document.getElementById("divMensaje2").innerHTML = "Debe seleccionar una empresa.";
+        document.getElementById("divMensaje2").style.display = "block";
+        return;
+    }
+    const cli_autoid = document.getElementById("selEmpresas").options[selectedOption].value;
+    const hdRsp = document.getElementById('hdRsp').value;
+
+    //console.log('cli_autoid:', cli_autoid);
+    //console.log('hdRsp:', hdRsp);
+    if (cli_autoid !== hdRsp) {
+        //console.log("Los valores no coinciden");
+        document.getElementById("divMensaje2").innerHTML = "Datos ingresados inválidos.<br>Este acceso será bloqueado por una hora.";
+        document.getElementById("divMensaje2").style.display = "block";
+
+    } else {
+        //console.log("Los valores coinciden");
+        var divMensaje2 = document.getElementById("divMensaje2");
+        divMensaje2.style.display = "none";
+
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({
+            "de": "sistemas@cygnus.cl",
+            "para": document.getElementById('Correo').value,
+            "cc": "",
+            "asunto": "Recuperación Contraseña Sistemas Cygnus prueba3",
+            "cuerpo": "Estimad@, <br /><br /> Se solicitó la recuperación de la contraseña desde el sitio web de Cygnus.<br /> <br />Por favor ingrese al siguiente link para poder actualizar su contraseña: <br>",
+            "adjuntos": "",
+            "esHtml": 1,
+            "nombreSistema": "Login",
+            "metodoEnvia": "SQL"
+        });
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        fetch(url, requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+    }
+
+}
 
 //  Limpiar Modal
+const myModal = document.getElementById("Modal");
 function limpiarModal() {
     
     document.getElementById('txtRut').value = '';
@@ -237,6 +312,7 @@ window.onload = function() {
         }
     });
 };
+
 
 
 function home() {
