@@ -1,0 +1,77 @@
+﻿@{
+    Layout = null;
+}
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Grupo Cygnus | Template</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <!--<link href="~/Content/Site.css" rel="stylesheet" />-->
+    <!--<link href="~/Content/layout.css"/>-->
+    @*<link href="~/Content/bootstrap.min_new.css" rel="stylesheet" />*@
+    <link href="~/css/recPass.css" rel="stylesheet" />
+    @*<link href="~/Content/bootstrap.css"/>*@
+
+
+    <script src="~/js/cygnus-base.js"></script>
+    <script src="~/js/route.js"></script>
+    <script src="~/Content/js/bootstrap.bundle.min.js"></script>
+
+
+    @*<script type="text/javascript">
+    function login() {
+    window.location.href = "/Home/Index";
+    }
+    </script>*@
+</head>
+
+<body>
+
+    <div>
+        <img alt="Grupo Cygnus" src="~/Content/images/logo.png" class="center-block" />
+    </div>
+
+  <div class="container well contenedor">
+    <div class="row">
+        <div class="col text-center">
+        <h4 class="RecText">Actualización de Contraseña</h4>
+        <br>
+        </div>
+    </div>
+        <div class="form-group">
+        <div class="col-sm-10">
+            <input name="txtNuevaPass" id="txtNewPass" type="password" class="form-control" placeholder="Ingrese su nueva contraseña " runat="server" />
+        </div>
+        </div>
+        <div class="form-group">
+        <div class="col-sm-10">
+            <input name="txtRepNuevaPass" id="txtNewPassRep" type="password" class="form-control" placeholder="Vuelva a ingresar su contraseña" runat="server" /> 
+        </div>
+        </div>
+        <br>
+        <div class="form-group">
+        <Button ID="btnActPass" class="btn btn-primary center-block" onclick="ActualizarPass(); return false">Actualizar Contraseña</Button>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div id="divMensaje3" class="col-md-12 alert alert-danger" style="display:none;"></div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div id="divMensaje4" class="col-md-12 alert alert-danger" style="display:none;"></div>
+            <div class="clearfix"></div>
+        </div>
+   
+  </div>
+
+
+ <footer class="d-flex justify-content-center flex-wrap align-items-center bg-light footer">
+    <img alt="Grupo Cygnus" src="~/Content/images/banner1.jpg" class="logo" />
+    <p class="posicion fs-5 px-3  pt-3 text-muted">Argomedo 302 Santiago</p>
+    <p class="posicion fs-5 px-3  pt-3 text-muted">+56 2 2733 7500</p>
+    <p class="posicion fs-5 px-3  pt-3 text-muted">contacto@cygnus.cl</p>
+    <p class="copy fs-5 px-3  pt-3 text-muted">Grupo Cygnus2012 &copy; Todos Los Derechos Reservados</p> 
+  </footer>
+
+</body>

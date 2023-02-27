@@ -158,6 +158,58 @@ function login() {
 
 }
 
+function ActualizarPass() {
+
+    var url = host() + 'Usuario/Usuario_Actualizar_Clave'
+    var USR_PASS1 = document.getElementById("txtNewPass").value;
+    var USR_PASS2 = document.getElementById("txtNewPassRep").value;
+    var mensaje = document.getElementById("divMensaje3");
+    var mensaje2 = document.getElementById("divMensaje4");
+
+    if (USR_PASS1 !== USR_PASS2) {
+        mensaje.innerHTML = "Las contraseñas no coinciden, intente nuevamente.";
+        mensaje.style.display = "block";
+        return;
+
+    } else {
+        var USR_PASS = USR_PASS1;
+        mensaje.style.display = "none";
+
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({
+            "usR_PASS": USR_PASS,
+            "usR_RUT": "191297849"
+        });
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        fetch(url, requestOptions)
+            .then(response => {
+                if (response.ok) {
+                    mensaje2.innerHTML = "La contraseña se actualizó correctamente.";
+                    mensaje2.className = "col-md-12 alert alert-success";
+                    mensaje2.style.display = "block";
+                } else {
+                    mensaje2.innerHTML = "Error al actualizar la contraseña."
+                    mensaje2.style.display = "block";
+                }
+            })
+            .then(result => console.log(result))
+            .catch(error => {
+                mensaje2.innerHTML = "Error al conectar con el servicio. Intente nuevamente más tarde.";
+                mensaje2.style.display = "block";
+                console.log('error', error)
+            }); 
+    }       
+}
+        
 function enviarRut() {
     
     const selectEmpresas = document.getElementById("selEmpresas");
@@ -237,9 +289,8 @@ function enviarRut() {
 
 
 function recuperarPass() {
-
+    var USR_RUT = document.getElementById('txtRut').value; 
     var url = host() + 'Usuario/Usuario_Enviar_Correo_Recuperacion'
-
     const selectedOption = document.getElementById("selEmpresas").options.selectedIndex;
     if (selectedOption === -1) {
         document.getElementById("divMensaje2").innerHTML = "Debe seleccionar una empresa.";
@@ -265,15 +316,9 @@ function recuperarPass() {
         myHeaders.append("Content-Type", "application/json");
 
         var raw = JSON.stringify({
-            "de": "sistemas@cygnus.cl",
+
             "para": document.getElementById('Correo').value,
-            "cc": "",
-            "asunto": "Recuperación Contraseña Sistemas Cygnus prueba3",
-            "cuerpo": "Estimad@, <br /><br /> Se solicitó la recuperación de la contraseña desde el sitio web de Cygnus.<br /> <br />Por favor ingrese al siguiente link para poder actualizar su contraseña: <br>",
-            "adjuntos": "",
-            "esHtml": 1,
-            "nombreSistema": "Login",
-            "metodoEnvia": "SQL"
+            
         });
 
         var requestOptions = {
@@ -283,7 +328,7 @@ function recuperarPass() {
             redirect: 'follow'
         };
 
-        fetch(url, requestOptions)
+        fetch(url+ USR_RUT, requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
@@ -302,18 +347,16 @@ function limpiarModal() {
   }
 
 // Borrar Mensaje de error del input Rut
-window.onload = function() {
+document.addEventListener("DOMContentLoaded", function () {
     var USR_LOGIN = document.getElementById("txtRut");
-    USR_LOGIN.addEventListener("input", function() {
+    USR_LOGIN.addEventListener("input", function () {
         var rut = USR_LOGIN.value;
         if (rut.trim().length >= 8) {
             var divMensaje = document.getElementById("divMensaje");
             divMensaje.style.display = "none";
         }
     });
-};
-
-
+});
 
 function home() {
     var rut = document.getElementById('rut').value;

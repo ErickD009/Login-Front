@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2czWsJ7GOcSLwUPAvIq+ib2Fcb/O3Wyemf9wUfjSjns=",
+  "Hash": "eaB0Tt5Uq7mrztIjljLZ5OVnddviJhZdeHOtkUmmwYo=",
   "Source": "LoginFRONT",
   "BasePath": "_content/LoginFRONT",
   "Mode": "Default",
@@ -35885,6 +35885,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\login.css"
+    },
+    {
+      "Identity": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\css\\recPass.css",
+      "SourceId": "LoginFRONT",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\",
+      "BasePath": "_content/LoginFRONT",
+      "RelativePath": "css/recPass.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\recPass.css"
     },
     {
       "Identity": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\css\\site.css",
