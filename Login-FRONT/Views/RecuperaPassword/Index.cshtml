@@ -1,43 +1,45 @@
 ﻿@{
     Layout = null;
 }
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Grupo Cygnus | Template</title>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Grupo Cygnus | Template</title>
 
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <!--<link href="~/Content/Site.css" rel="stylesheet" />-->
-    <!--<link href="~/Content/layout.css"/>-->
-    @*<link href="~/Content/bootstrap.min_new.css" rel="stylesheet" />*@
-    <link href="~/css/recPass.css" rel="stylesheet" />
-    @*<link href="~/Content/bootstrap.css"/>*@
-
-
-    <script src="~/js/cygnus-base.js"></script>
-    <script src="~/js/route.js"></script>
-    <script src="~/Content/js/bootstrap.bundle.min.js"></script>
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <!--<link href="~/Content/Site.css" rel="stylesheet" />-->
+        <!--<link href="~/Content/layout.css"/>-->
+        @*<link href="~/Content/bootstrap.min_new.css" rel="stylesheet" />*@
+        <link href="~/css/recPass.css" rel="stylesheet" />
+        @*<link href="~/Content/bootstrap.css"/>*@
 
 
-    @*<script type="text/javascript">
-    function login() {
-    window.location.href = "/Home/Index";
-    }
-    </script>*@
-</head>
+        <script src="~/js/cygnus-base.js"></script>
+        <script src="~/js/route.js"></script>
+        <script src="~/Content/js/bootstrap.bundle.min.js"></script>
 
-<body>
 
-    <div>
-        <img alt="Grupo Cygnus" src="~/Content/images/logo.png" class="center-block" />
-    </div>
+        @*<script type="text/javascript">
+        function login() {
+        window.location.href = "/Home/Index";
+        }
+        </script>*@
+    </head>
 
-  <div class="container well contenedor">
-    <div class="row">
-        <div class="col text-center">
-        <h4 class="RecText">Actualización de Contraseña</h4>
-        <br>
+    <body>
+
+        <div>
+            <img alt="Grupo Cygnus" src="~/Content/images/logo.png" class="center-block" />
         </div>
-    </div>
+
+        <div class="container well contenedor">
+        <input type="hidden" id="txtEnRut" value="0" />
+        <div class="row">
+            <div class="col text-center">
+            <h4 class="RecText">Actualización de Contraseña</h4>
+            <br>
+            </div>
+        </div>
         <div class="form-group">
         <div class="col-sm-10">
             <input name="txtNuevaPass" id="txtNewPass" type="password" class="form-control" placeholder="Ingrese su nueva contraseña " runat="server" />
@@ -66,12 +68,37 @@
   </div>
 
 
- <footer class="d-flex justify-content-center flex-wrap align-items-center bg-light footer">
-    <img alt="Grupo Cygnus" src="~/Content/images/banner1.jpg" class="logo" />
-    <p class="posicion fs-5 px-3  pt-3 text-muted">Argomedo 302 Santiago</p>
-    <p class="posicion fs-5 px-3  pt-3 text-muted">+56 2 2733 7500</p>
-    <p class="posicion fs-5 px-3  pt-3 text-muted">contacto@cygnus.cl</p>
-    <p class="copy fs-5 px-3  pt-3 text-muted">Grupo Cygnus2012 &copy; Todos Los Derechos Reservados</p> 
-  </footer>
+         <footer class="d-flex justify-content-center flex-wrap align-items-center bg-light footer">
+            <img alt="Grupo Cygnus" src="~/Content/images/banner1.jpg" class="logo" />
+            <p class="posicion fs-5 px-3  pt-3 text-muted">Argomedo 302 Santiago</p>
+            <p class="posicion fs-5 px-3  pt-3 text-muted">+56 2 2733 7500</p>
+            <p class="posicion fs-5 px-3  pt-3 text-muted">contacto@cygnus.cl</p>
+            <p class="copy fs-5 px-3  pt-3 text-muted">Grupo Cygnus2012 &copy; Todos Los Derechos Reservados</p> 
+          </footer>
 
-</body>
+
+        <script type="text/javascript">
+
+            var urlParams = new URLSearchParams(window.location.search);
+            var rut = urlParams.get('rut');
+            var token = "";
+
+            var params = window.location.search.substring(1).split("&");
+            for (var i = 0; i < params.length; i++) {
+                var param = params[i].split("=");
+                if (param[0] === "token") {
+                    token = param[1];
+                    break;
+                }
+            }
+
+            var txtEnRut = document.getElementById('txtEnRut');
+            txtEnRut.value = rut;
+
+            console.log('rut', rut);
+            console.log('token', token);
+
+        </script>
+
+    </body>
+</html>
