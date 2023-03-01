@@ -215,32 +215,28 @@ function login() {
                 console.log('error', error)
             }); 
         }
-    }
-    
-    
-    function enviarRut() {
+}
 
+    function enviarRut() {
         const selectEmpresas = document.getElementById("selEmpresas");
         selectEmpresas.innerHTML = "";
+        const btnEnviarRut = document.getElementById("btnEnviarRut");
 
-        var USR_LOGIN = document.getElementById('txtRut').value;
-        USR_LOGIN = USR_LOGIN.replace(/\./g, '').replace(/\-/g, '');
+        const USR_LOGIN = document.getElementById('txtRut').value.replace(/\./g, '').replace(/\-/g, '');
         if (USR_LOGIN.trim().length < 8) {
-            var divMensaje = document.getElementById("divMensaje");
+            const divMensaje = document.getElementById("divMensaje");
             divMensaje.innerHTML = "Por favor, ingrese un rut válido.";
             divMensaje.style.display = "block";
             return;
         }
 
-        var myHeaders = new Headers();
+        const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
-        var url = host() + 'Usuario/Usuario_Traer_Empresas'
-        var url2 = host() + 'Usuario/Usuario_Traer_Correo'
-        var raw = JSON.stringify({
-            'usrlogin': USR_LOGIN
-        });
-        var requestOptions = {
+        const url = host() + 'Usuario/Usuario_Traer_Empresas'
+        const url2 = host() + 'Usuario/Usuario_Traer_Correo'
+        const raw = JSON.stringify({ 'usrlogin': USR_LOGIN });
+        const requestOptions = {
             method: 'POST',
             headers: myHeaders,
             body: raw,
@@ -256,44 +252,212 @@ function login() {
             })
             .then(data => {
                 console.log(data);
-                const selectEmpresas = document.getElementById("selEmpresas");
                 data.forEach(empresa => {
                     const option = document.createElement("option");
                     option.text = empresa.nombreCliente;
                     option.value = empresa.cli_autoid;
                     if (empresa.marcaRespuestaCorrecta === 'X') document.getElementById('hdRsp').value = empresa.cli_autoid;
                     selectEmpresas.add(option);
-                    //console.log(empresa.cli_autoid);
                 });
             })
             .catch(error => {
-                var divMensaje = document.getElementById("divMensaje");
+                let divMensaje = document.getElementById("divMensaje");
                 if (error instanceof TypeError) {
                     divMensaje.innerHTML = "No se pudo conectar con el servidor.";
                 } else if (error instanceof Error && error.message.includes("400")) {
-                    divMensaje.innerHTML = "Rut no encontrado.";
+                    divMensaje.innerHTML = "Error, sus intentos de recuperación de contraseña serán bloqueados por 60 minutos.";
+                    divMensaje.style.display = "block";
+
+                    
+                    const bloqueo = { rut: USR_LOGIN, tiempo: Date.now() + 60 * 60 * 1000 }; 
+                    localStorage.setItem('bloqueoRut', JSON.stringify(bloqueo));
+
+                  
+                    btnEnviarRut.disabled = true;
+                    setTimeout(() => {
+                        btnEnviarRut.disabled = false;
+                        divMensaje.style.display = "none";
+                    }, 60 * 60 * 1000);
                 } else {
                     divMensaje.innerHTML = "Ocurrió un error inesperado.";
+                    divMensaje.style.display = "block";
                 }
-                divMensaje.style.display = "block";
             });
 
-
-        fetch(url2, requestOptions)
+            fetch(url2, requestOptions)
             .then(response => response.json())
-            //.then(result => (console.log(result)))
             .then(result => {
                 console.log(result);
                 document.getElementById('txtCorreo').value = result.usr_mail;
             })
             .catch(error => console.log('error', error));
+            var divMensaje = document.getElementById("divMensaje");
+            divMensaje.style.display = "none";
+            var divMensaje2 = document.getElementById("divMensaje2");
+            divMensaje2.style.display = "none";
 
-
-        var divMensaje = document.getElementById("divMensaje");
-        divMensaje.style.display = "none";
-        var divMensaje2 = document.getElementById("divMensaje2");
-        divMensaje2.style.display = "none";
     }
+
+    
+    //function enviarRut2() {
+    //    const selectEmpresas = document.getElementById("selEmpresas");
+    //    selectEmpresas.innerHTML = "";
+
+    //    var USR_LOGIN = document.getElementById('txtRut').value;
+    //    USR_LOGIN = USR_LOGIN.replace(/\./g, '').replace(/\-/g, '');
+
+    //    if (USR_LOGIN.trim().length < 8) {
+    //        var divMensaje = document.getElementById("divMensaje");
+    //        divMensaje.innerHTML = "Por favor, ingrese un rut válido.";
+    //        divMensaje.style.display = "block";
+    //        return;
+    //    }
+
+    //    var myHeaders = new Headers();
+    //    myHeaders.append("Content-Type", "application/json");
+
+    //    var url = host() + 'Usuario/Usuario_Traer_Empresas'
+    //    var url2 = host() + 'Usuario/Usuario_Traer_Correo'
+    //    var raw = JSON.stringify({
+    //        'usrlogin': USR_LOGIN
+    //    });
+    //    var requestOptions = {
+    //        method: 'POST',
+    //        headers: myHeaders,
+    //        body: raw,
+    //        redirect: 'follow'
+    //    };
+
+    //    fetch(url, requestOptions)
+    //        .then(response => {
+    //            if (!response.ok) {
+    //                throw new Error("Error " + response.status);
+    //            }
+    //            return response.json();
+    //        })
+    //        .then(data => {
+    //            console.log(data);
+    //            const selectEmpresas = document.getElementById("selEmpresas");
+    //            data.forEach(empresa => {
+    //                const option = document.createElement("option");
+    //                option.text = empresa.nombreCliente;
+    //                option.value = empresa.cli_autoid;
+    //                if (empresa.marcaRespuestaCorrecta === 'X') document.getElementById('hdRsp').value = empresa.cli_autoid;
+    //                selectEmpresas.add(option);
+    //                //console.log(empresa.cli_autoid);
+    //            });
+    //        })
+    //        .catch(error => {
+    //            var divMensaje = document.getElementById("divMensaje");
+    //            if (error instanceof TypeError) {
+    //                divMensaje.innerHTML = "No se pudo conectar con el servidor.";
+    //            } else if (error instanceof Error && error.message.includes("400")) {
+    //                divMensaje.innerHTML = "Error, sus intentos de recuperación de contraseña serán bloqueados por 60 minutos.";
+    //                localStorage.setItem(USR_LOGIN, Date.now() + 3600000); // Bloquear por 60 minutos
+    //                document.getElementById("btnEnviarRut").disabled = true; // Deshabilitar botón
+    //                setTimeout(() => {
+    //                    localStorage.removeItem(USR_LOGIN); // Desbloquear después de 60 minutos
+    //                    document.getElementById("btnEnviarRut").disabled = false; // Habilitar botón
+    //                }, 3600000);
+    //            } else {
+    //                divMensaje.innerHTML = "Ocurrió un error inesperado.";
+    //            }
+    //            divMensaje.style.display = "block";
+    //        });
+
+    //    fetch(url2, requestOptions)
+    //        .then(response => response.json())
+    //        //.then(result => (console.log(result)))
+    //        .then(result => {
+    //            console.log(result);
+    //            document.getElementById('txtCorreo').value = result.usr_mail;
+    //        })
+    //        .catch(error => console.log('error', error));
+
+    //    var divMensaje = document.getElementById("divMensaje");
+    //    divMensaje.style.display = "none";
+    //    var divMensaje2 = document.getElementById("divMensaje2");
+    //    divMensaje2.style.display = "none";
+    //}
+
+
+
+    //function enviarRut1() {
+
+    //    const selectEmpresas = document.getElementById("selEmpresas");
+    //    selectEmpresas.innerHTML = "";
+
+    //    var USR_LOGIN = document.getElementById('txtRut').value;
+    //    USR_LOGIN = USR_LOGIN.replace(/\./g, '').replace(/\-/g, '');
+    //    if (USR_LOGIN.trim().length < 8) {
+    //        var divMensaje = document.getElementById("divMensaje");
+    //        divMensaje.innerHTML = "Por favor, ingrese un rut válido.";
+    //        divMensaje.style.display = "block";
+    //        return;
+    //    }
+
+    //    var myHeaders = new Headers();
+    //    myHeaders.append("Content-Type", "application/json");
+
+    //    var url = host() + 'Usuario/Usuario_Traer_Empresas'
+    //    var url2 = host() + 'Usuario/Usuario_Traer_Correo'
+    //    var raw = JSON.stringify({
+    //        'usrlogin': USR_LOGIN
+    //    });
+    //    var requestOptions = {
+    //        method: 'POST',
+    //        headers: myHeaders,
+    //        body: raw,
+    //        redirect: 'follow'
+    //    };
+
+    //    fetch(url, requestOptions)
+    //        .then(response => {
+    //            if (!response.ok) {
+    //                throw new Error("Error " + response.status);
+    //            }
+    //            return response.json();
+    //        })
+    //        .then(data => {
+    //            console.log(data);
+    //            const selectEmpresas = document.getElementById("selEmpresas");
+    //            data.forEach(empresa => {
+    //                const option = document.createElement("option");
+    //                option.text = empresa.nombreCliente;
+    //                option.value = empresa.cli_autoid;
+    //                if (empresa.marcaRespuestaCorrecta === 'X') document.getElementById('hdRsp').value = empresa.cli_autoid;
+    //                selectEmpresas.add(option);
+    //                //console.log(empresa.cli_autoid);
+    //            });
+    //        })
+    //        .catch(error => {
+    //            var divMensaje = document.getElementById("divMensaje");
+    //            if (error instanceof TypeError) {
+    //                divMensaje.innerHTML = "No se pudo conectar con el servidor.";
+    //            } else if (error instanceof Error && error.message.includes("400")) {
+    //                divMensaje.innerHTML = "Error, sus intentos de recuperación de contraseña seran bloqueados por 60 minutos.";
+    //            } else {
+    //                divMensaje.innerHTML = "Ocurrió un error inesperado.";
+    //            }
+    //            divMensaje.style.display = "block";
+    //        });
+
+
+    //    fetch(url2, requestOptions)
+    //        .then(response => response.json())
+    //        //.then(result => (console.log(result)))
+    //        .then(result => {
+    //            console.log(result);
+    //            document.getElementById('txtCorreo').value = result.usr_mail;
+    //        })
+    //        .catch(error => console.log('error', error));
+
+
+    //    var divMensaje = document.getElementById("divMensaje");
+    //    divMensaje.style.display = "none";
+    //    var divMensaje2 = document.getElementById("divMensaje2");
+    //    divMensaje2.style.display = "none";
+    //}
 
     //function recuperarPass() {
     //    var USR_RUT = document.getElementById('txtRut').value;
@@ -367,11 +531,10 @@ function login() {
     //    }
     //}
 
-
     function recuperarPass() {
         var USR_RUT = document.getElementById('txtRut').value;
         var url = host() + 'Usuario/Usuario_Enviar_Correo_Recuperacion'
-
+        var url2 = host() + 'Usuario/Log_Recuperar_Password'
         const selectedOption = document.getElementById("selEmpresas").options.selectedIndex;
         if (selectedOption === -1) {
             document.getElementById("divMensaje2").innerHTML = "Debe seleccionar una empresa.";
@@ -381,10 +544,36 @@ function login() {
         const cli_autoid = document.getElementById("selEmpresas").options[selectedOption].value;
         const hdRsp = document.getElementById('hdRsp').value;
 
+        var txtCorreo = document.getElementById('txtCorreo').value;
+        if (txtCorreo === '') {
+            document.getElementById("divMensaje2").innerHTML = "El usuario no tiene correo.";
+            document.getElementById("divMensaje2").style.display = "block";
+            return;
+        }
+
         //console.log('cli_autoid:', cli_autoid);
         //console.log('hdRsp:', hdRsp);
         if (cli_autoid !== hdRsp) {
-            //console.log("Los valores no coinciden");
+            console.log("Los valores no coinciden");
+            var myHeaders = new Headers();
+
+            myHeaders.append("Content-Type", "application/json");
+
+            var raw = JSON.stringify({
+                "usrlogin": USR_RUT
+            });
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            fetch( url2 , requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
             document.getElementById("divMensaje2").innerHTML = "Datos ingresados inválidos.<br>Este acceso será bloqueado por una hora.";
             document.getElementById("divMensaje2").style.display = "block";
 
@@ -409,9 +598,29 @@ function login() {
             };
 
             fetch(url, requestOptions)
-                .then(response => response.text())
-                //.then(result => console.log(result))
-                .catch(error => console.log('error', error));
+                .then(response => {
+                    if (response.ok) {
+                      
+                        document.getElementById("divMensaje2").innerHTML = "Se le ha enviado un correo electrónico con las instrucciones para la recuperación.";
+                        document.getElementById("divMensaje2").style.backgroundColor = "green";
+                        document.getElementById("divMensaje2").style.color = "white";
+                        document.getElementById("divMensaje2").style.display = "inline-block";
+                        document.getElementById("divMensaje2").classList.add("col-md-12", "alert", "alert-success");
+
+                    } else {
+                        
+                        document.getElementById("divMensaje2").innerHTML = "Ha ocurrido un error al enviar el correo electrónico.";
+                        document.getElementById("divMensaje2").style.color = "red";
+                        document.getElementById("divMensaje2").style.display = "block";
+                    }
+                })
+                .catch(error => {
+                    
+                    console.log(error)
+                    document.getElementById("divMensaje2").innerHTML = "Ha ocurrido un error de red.";
+                    document.getElementById("divMensaje2").style.color = "red";
+                    document.getElementById("divMensaje2").style.display = "block";
+                });
         }
 
     }
