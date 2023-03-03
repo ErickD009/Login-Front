@@ -18,7 +18,6 @@
 }
 
 
-
 .copy {
     /*margin-top: auto;
     margin-left: -416px;*/
@@ -37,7 +36,7 @@
 }
 
 .logo {
-
+    width:15%;
 }
 
 .modalheader {
@@ -100,6 +99,16 @@
         height: 141px;
     }
 }
+
+/*@media (max-width:587px) {
+    .footer {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        height: 187px;
+    }
+}*/
+
 
 
 @media (max-width:1800px) {

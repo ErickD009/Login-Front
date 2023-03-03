@@ -8,8 +8,8 @@
 
 <head>
   <meta name="viewport" content="width=device-width" />
-  <title>Grupo Cygnus | Template</title>
-  
+  <title>Grupo Cygnus | Acceso a Sistemas</title>
+  <link rel="icon" type="image/png" href="~/Content/images/unnamed.png" />
   <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
   <!--<link href="~/Content/Site.css" rel="stylesheet" />-->
   <!--<link href="~/Content/layout.css"/>-->
@@ -17,6 +17,7 @@
   <link href="~/css/login.css" rel="stylesheet" />
   @*<link href="~/Content/bootstrap.css"/>*@
 
+ 
 
   <script src="~/js/cygnus-base.js"></script>
   <script src="~/js/route.js"></script>
@@ -30,14 +31,18 @@
   </script>*@
 </head>
 
-<body>
-  <div>
-    <img alt="Grupo Cygnus" src="~/Content/images/logo.png" class="center-block" />
-  </div>
+    <body>
+      <div>
+        <img alt="Grupo Cygnus" src="~/Content/images/logotipoA.png" class="center-block" />
+      </div>
 
                                                   <!-- Login -->
   <input type="hidden" id="hdRsp" value="0" />
   <input type="hidden" id="txtCorreo" value="0" />
+
+  @*Valor en minutos del tiempo de bloqueo para recuperacion de clave *@
+  <input type="hidden" id="txtminutosRecuperacionPass" value="60">
+
   <div class="container well contenedor">
     <div class="row">
       <div class="col text-center">
@@ -64,6 +69,7 @@
         <a href="#" class="btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#Modal">¿Ha olvidado su contraseña?</a>
       </div>
     </form>
+    <br>
     <div id="alertPass" class="alert alert-warning" style="display:none; width: 400px; margin: 0 auto;">
       <span id="msjeAcceso"></span>
     </div>
@@ -112,17 +118,20 @@
       </div>
     </div>
                                                  <!-- Footer -->
-  
-    <footer class="d-flex justify-content-center flex-wrap align-items-center bg-light footer">
-    <img alt="Grupo Cygnus" src="~/Content/images/banner1.jpg" class="logo" />
-    <p class="posicion fs-5 px-3  pt-3 text-muted">Argomedo 302 Santiago</p>
-    <p class="posicion fs-5 px-3  pt-3 text-muted">+56 2 2733 7500</p>
-    <p class="posicion fs-5 px-3  pt-3 text-muted">contacto@cygnus.cl</p>
-    <p class="copy fs-5 px-3  pt-3 text-muted">Grupo Cygnus2012 &copy; Todos Los Derechos Reservados</p> 
-  </footer>
-  
-  
-</body>
+
+    
+      <footer class="d-flex justify-content-center flex-wrap align-items-center bg-light footer">
+        <img alt="Grupo Cygnus" src="~/Content/images/logotipoA.png" class="logo" />
+        <p class="posicion fs-5 px-3  pt-3 text-muted">Argomedo 302 Santiago</p>
+        <p class="posicion fs-5 px-3  pt-3 text-muted">+56 2 2733 7500</p>
+        <p class="posicion fs-5 px-3  pt-3 text-muted">contacto@cygnus.cl</p>
+        <p class="copy fs-5 px-3  pt-3 text-muted">Grupo Cygnus2012 &copy; Todos Los Derechos Reservados</p> 
+      </footer>
+
+        <script>
+        
+        </script>
+    </body>
 
 
 </html>

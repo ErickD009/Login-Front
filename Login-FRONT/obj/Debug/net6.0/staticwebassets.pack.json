@@ -169,8 +169,16 @@
       "PackagePath": "staticwebassets\\Content\\images\\09.gif"
     },
     {
+      "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\Curricular-icon.jpg",
+      "PackagePath": "staticwebassets\\Content\\images\\Curricular-icon.jpg"
+    },
+    {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\Libro.png",
       "PackagePath": "staticwebassets\\Content\\images\\Libro.png"
+    },
+    {
+      "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\Maestro-icon.png",
+      "PackagePath": "staticwebassets\\Content\\images\\Maestro-icon.png"
     },
     {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\agregar.png",
@@ -187,6 +195,10 @@
     {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\banner1.jpg",
       "PackagePath": "staticwebassets\\Content\\images\\banner1.jpg"
+    },
+    {
+      "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\banner2.jpg",
+      "PackagePath": "staticwebassets\\Content\\images\\banner2.jpg"
     },
     {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\buscarUsuario.png",
@@ -217,8 +229,16 @@
       "PackagePath": "staticwebassets\\Content\\images\\logo.png"
     },
     {
+      "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\logo_1.png",
+      "PackagePath": "staticwebassets\\Content\\images\\logo_1.png"
+    },
+    {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\logotipo.png",
       "PackagePath": "staticwebassets\\Content\\images\\logotipo.png"
+    },
+    {
+      "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\logotipoA.png",
+      "PackagePath": "staticwebassets\\Content\\images\\logotipoA.png"
     },
     {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\pds.png",
@@ -227,6 +247,10 @@
     {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\powerBi.png",
       "PackagePath": "staticwebassets\\Content\\images\\powerBi.png"
+    },
+    {
+      "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\seguimientoTrabajador.png",
+      "PackagePath": "staticwebassets\\Content\\images\\seguimientoTrabajador.png"
     },
     {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\sort_asc.png",
@@ -247,6 +271,14 @@
     {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\sort_desc_disabled.png",
       "PackagePath": "staticwebassets\\Content\\images\\sort_desc_disabled.png"
+    },
+    {
+      "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\systems\\powerBi.png",
+      "PackagePath": "staticwebassets\\Content\\images\\systems\\powerBi.png"
+    },
+    {
+      "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\task-complete.png",
+      "PackagePath": "staticwebassets\\Content\\images\\task-complete.png"
     },
     {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\ui-icons_444444_256x240.png",
@@ -271,6 +303,10 @@
     {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\ui-icons_ffffff_256x240.png",
       "PackagePath": "staticwebassets\\Content\\images\\ui-icons_ffffff_256x240.png"
+    },
+    {
+      "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\unnamed.png",
+      "PackagePath": "staticwebassets\\Content\\images\\unnamed.png"
     },
     {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\user.jpg",

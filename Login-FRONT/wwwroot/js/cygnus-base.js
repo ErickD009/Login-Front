@@ -1,105 +1,5 @@
-﻿//function redirecionar() {
+﻿
 
-//    var uxs = document.getElementById('uxsform').value;
-
-//    if (uxs != "-1") {
-//        const data = new FormData();
-//        data.append('uxs', uxs);
-
-//        var url = generico() + 'Usuario/validaUsuarioXSistema';
-
-//        fetch(url, {
-//            method: 'POST', body: data
-//        })
-//            .then(res => res.json())
-//            .then(
-//                (result) => {
-//                    //console.log(result);
-//                    if (result.estadoSession == 0) {
-//                        document.getElementById('msjeAcceso').innerHTML = result.mensajeSession;
-//                        document.getElementById('alertPass').style.display = 'block';
-//                        $("#alertPass").fadeOut(3000);
-//                    } else {
-
-
-//                        var rut = result.rutUsuarioSession;
-//                        var usr = result.usrUsuarioSession;
-//                        var uxs = result.uxsUsuarioSession;
-//                        var nombre = result.nombreUsuarioSession;
-//                        var token = result.tokenSession;
-
-//                        inicio(rut, usr, uxs, nombre, token);
-
-//                    }
-//                },
-//                (error) => {
-//                    alert('error: ' + error);
-//                }
-//            )
-//            .catch((error) => console.log(error))
-//    }
-//    else
-//        document.getElementById('divLogin').style.display = 'block';
-//}
-
-//function redirecionarTemp() {
-
-//    var uxs = 186216;//document.getElementById('uxsform').value;
-
-//    if (uxs != "-1") {
-//        const data = new FormData();
-//        data.append('uxs', uxs);
-
-//        var url = generico() + 'Usuario/validaUsuarioXSistema';
-
-//        fetch(url, {
-//            method: 'POST', body: data
-//        })
-//            .then(res => res.json())
-//            .then(
-//                (result) => {
-//                    //console.log(result);
-//                    if (result.estadoSession == 0) {
-//                        document.getElementById('msjeAcceso').innerHTML = result.mensajeSession;
-//                        document.getElementById('alertPass').style.display = 'block';
-//                        $("#alertPass").fadeOut(3000);
-//                    } else {
-
-
-//                        var rut = result.rutUsuarioSession.trim();
-//                        var pass = '0601';//result.pass;
-
-//                        loginTemp(rut, pass);
-
-//                    }
-//                },
-//                (error) => {
-//                    alert('error: ' + error);
-//                }
-//            )
-//            .catch((error) => console.log(error))
-//    }
-//    else
-//        document.getElementById('divLogin').style.display = 'block';
-//}
-//function loginTemp(rut, clave) {
-
-//    var user = rut;
-//    var pass = clave;
-//    var sistema = 115;
-
-//    const data = new FormData();
-//    data.append('usuario', user);
-//    data.append('pass', pass);
-//    data.append('sistema', sistema);
-
-//    //var url = host() + 'Usuario/validaUsuario';
-
-//    var url = generico() + 'Usuario/validaUsuario ';
-
-//    LoginCygnus(url, data);
-
-//}
 
 function LoginCygnus(url, data) {
 
@@ -110,7 +10,7 @@ function LoginCygnus(url, data) {
         .then(res => res.json())
         .then(
             (result) => {
-                //console.log(result);
+                console.log(result);
                 if (result.estadoSession == 0) {
                     document.getElementById('msjeAcceso').innerHTML = result.mensajeSession;
                     document.getElementById('alertPass').style.display = 'block';
@@ -153,6 +53,7 @@ function login() {
     //var url = origen() + 'Usuario/validaUsuario';
     var url = generico() + 'Usuario/validaUsuario ';
     //var url = host() + 'Usuario/Usuario_Traer_Sistemas';
+
     console.log(url, data);   
     LoginCygnus(url, data);
 
@@ -160,73 +61,79 @@ function login() {
 
     function ActualizarPass() {
 
-        var url = host() + 'Usuario/Usuario_Actualizar_Clave'
-        var USR_PASS1 = document.getElementById("txtNewPass").value;
-        var USR_PASS2 = document.getElementById("txtNewPassRep").value;
-        var USR_RUT = document.getElementById("txtEnRut").value;
-        var mensaje = document.getElementById("divMensaje3");
-        var mensaje2 = document.getElementById("divMensaje4");
+    var url = host() + 'Usuario/Usuario_Actualizar_Clave'
+    var USR_PASS1 = document.getElementById("txtNewPass").value;
+    var USR_PASS2 = document.getElementById("txtNewPassRep").value;
+    var USR_RUT = document.getElementById("txtEnRut").value;
+    var mensaje = document.getElementById("divMensaje3");
+    var mensaje2 = document.getElementById("divMensaje4");
 
-        var passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    var passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
-        if (USR_PASS1 !== USR_PASS2) {
-            mensaje.innerHTML = "Las contraseñas no coinciden, intente nuevamente.";
-            mensaje.style.display = "block";
-            mensaje2.style.display = "none";
-        } else if (!passRegex.test(USR_PASS1)) {
-            mensaje.innerHTML = "La contraseña debe tener al menos 8 caracteres, contener números y letras.";
-            mensaje.style.display = "block";
-            mensaje2.style.display = "none";
-        } else {
-        var USR_PASS = USR_PASS1;
-        mensaje.style.display = "none";
-        console.log(USR_RUT)
+    if (USR_PASS1 !== USR_PASS2) {
+        mensaje.innerHTML = "Las contraseñas no coinciden, intente nuevamente.";
+        mensaje.style.display = "block";
+        mensaje2.style.display = "none";
+    } else if (!passRegex.test(USR_PASS1)) {
+        mensaje.innerHTML = "La contraseña debe tener al menos 8 caracteres, contener números y letras.";
+        mensaje.style.display = "block";
+        mensaje2.style.display = "none";
+    } else {
+    var USR_PASS = USR_PASS1;
+    mensaje.style.display = "none";
+    console.log(USR_RUT)
 
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
-        var raw = JSON.stringify({
-            "usR_PASS": USR_PASS,
-            "usR_RUT": USR_RUT
-        });
+    var raw = JSON.stringify({
+        "usR_PASS": USR_PASS,
+        "usR_RUT": USR_RUT
+    });
 
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-        };
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
 
-        fetch(url, requestOptions)
-            .then(response => {
-                if (response.ok) {
-                    mensaje2.innerHTML = "La contraseña se actualizó correctamente.";
-                    mensaje2.className = "col-md-12 alert alert-success";
-                    mensaje2.style.display = "block";
-                } else {
-                    mensaje2.innerHTML = "Error al actualizar la contraseña."
-                    mensaje2.style.display = "block";
-                }
-            })
-            .then(result => console.log(result))
-            .catch(error => {
-                mensaje2.innerHTML = "Error al conectar con el servicio. Intente nuevamente más tarde.";
+    fetch(url, requestOptions)
+        .then(response => {
+            if (response.ok) {
+                mensaje2.innerHTML = "La contraseña se actualizó correctamente.";
+                mensaje2.className = "col-md-12 alert alert-success";
                 mensaje2.style.display = "block";
-                console.log('error', error)
-            }); 
-        }
+            } else {
+                mensaje2.innerHTML = "Error al actualizar la contraseña."
+                mensaje2.style.display = "block";
+            }
+        })
+        .then(result => console.log(result))
+        .catch(error => {
+            mensaje2.innerHTML = "Error al conectar con el servicio. Intente nuevamente más tarde.";
+            mensaje2.style.display = "block";
+            console.log('error', error)
+        }); 
+    }
 }
 
     function enviarRut() {
+        var minutosRecuperacionPass = document.getElementById('txtminutosRecuperacionPass').value;
         const selectEmpresas = document.getElementById("selEmpresas");
         selectEmpresas.innerHTML = "";
         const btnEnviarRut = document.getElementById("btnEnviarRut");
+        btnEnviarRut.disabled = true;
+        document.getElementById('btnRecuperar').disabled = true;
 
-        const USR_LOGIN = document.getElementById('txtRut').value.replace(/\./g, '').replace(/\-/g, '');
+        const USR_LOGIN = document.getElementById('txtRut').value.replace(/[-.\s]/g, '').trim();
+
         if (USR_LOGIN.trim().length < 8) {
             const divMensaje = document.getElementById("divMensaje");
             divMensaje.innerHTML = "Por favor, ingrese un rut válido.";
             divMensaje.style.display = "block";
+            btnEnviarRut.disabled = false;
+            document.getElementById('btnRecuperar').disabled = false;
             return;
         }
 
@@ -251,7 +158,6 @@ function login() {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
                 data.forEach(empresa => {
                     const option = document.createElement("option");
                     option.text = empresa.nombreCliente;
@@ -261,23 +167,17 @@ function login() {
                 });
             })
             .catch(error => {
-                let divMensaje = document.getElementById("divMensaje");
+                var divMensaje = document.getElementById("divMensaje");
                 if (error instanceof TypeError) {
                     divMensaje.innerHTML = "No se pudo conectar con el servidor.";
                 } else if (error instanceof Error && error.message.includes("400")) {
-                    divMensaje.innerHTML = "Error, sus intentos de recuperación de contraseña serán bloqueados por 60 minutos.";
+                    divMensaje.innerHTML = "Error. No se encontró el usuario en los registros. ";
                     divMensaje.style.display = "block";
-
-                    
-                    const bloqueo = { rut: USR_LOGIN, tiempo: Date.now() + 60 * 60 * 1000 }; 
-                    localStorage.setItem('bloqueoRut', JSON.stringify(bloqueo));
-
-                  
-                    btnEnviarRut.disabled = true;
-                    setTimeout(() => {
-                        btnEnviarRut.disabled = false;
-                        divMensaje.style.display = "none";
-                    }, 60 * 60 * 1000);
+                    document.getElementById('btnEnviarRut').disabled = true;
+                    document.getElementById('btnRecuperar').disabled = true;
+                } else if (error instanceof Error && error.message.includes("401")) {
+                    divMensaje.innerHTML = "Vuelva a intentarlo dentro de " + minutosRecuperacionPass + " minutos.";
+                    divMensaje.style.display = "block";
                 } else {
                     divMensaje.innerHTML = "Ocurrió un error inesperado.";
                     divMensaje.style.display = "block";
@@ -291,11 +191,14 @@ function login() {
                 document.getElementById('txtCorreo').value = result.usr_mail;
             })
             .catch(error => console.log('error', error));
+            /*document.getElementById('txtRut').value = "";*/
             var divMensaje = document.getElementById("divMensaje");
             divMensaje.style.display = "none";
             var divMensaje2 = document.getElementById("divMensaje2");
             divMensaje2.style.display = "none";
-
+            document.getElementById('btnEnviarRut').disabled = true;
+            document.getElementById('btnRecuperar').disabled = false;
+        
     }
 
     
@@ -532,13 +435,18 @@ function login() {
     //}
 
     function recuperarPass() {
+        var minutosRecuperacionPass = document.getElementById('txtminutosRecuperacionPass').value;
         var USR_RUT = document.getElementById('txtRut').value;
         var url = host() + 'Usuario/Usuario_Enviar_Correo_Recuperacion'
         var url2 = host() + 'Usuario/Log_Recuperar_Password'
+        document.getElementById('btnRecuperar').disabled = true;
+        document.getElementById('divMensaje2').style.display = 'none';
+        document.getElementById('divMensaje2').innerHTML = ''; 
         const selectedOption = document.getElementById("selEmpresas").options.selectedIndex;
         if (selectedOption === -1) {
             document.getElementById("divMensaje2").innerHTML = "Debe seleccionar una empresa.";
             document.getElementById("divMensaje2").style.display = "block";
+            document.getElementById("selEmpresas").selectedIndex = -1;
             return;
         }
         const cli_autoid = document.getElementById("selEmpresas").options[selectedOption].value;
@@ -569,17 +477,24 @@ function login() {
                 body: raw,
                 redirect: 'follow'
             };
-
+            
             fetch( url2 , requestOptions)
                 .then(response => response.text())
                 .then(result => console.log(result))
                 .catch(error => console.log('error', error));
-            document.getElementById("divMensaje2").innerHTML = "Datos ingresados inválidos.<br>Este acceso será bloqueado por una hora.";
+            document.getElementById("divMensaje2").innerHTML = "Datos ingresados inválidos.<br>Deberá volver a intentarlo dentro de " + minutosRecuperacionPass + " minutos";
             document.getElementById("divMensaje2").style.display = "block";
+
+
+            document.getElementById("selEmpresas").innerHTML = '';
+
+            //document.getElementById("selEmpresas").options.selectedIndex = -1;
+            document.getElementById('btnEnviarRut').disabled = false;
+            document.getElementById('btnRecuperar').disabled = false;
 
         } else {
             //console.log("Los valores coinciden");
-            var divMensaje2 = document.getElementById("divMensaje2");
+            var divMensaje2 = document.getElementById("divMensaje1");
             divMensaje2.style.display = "none";
 
             var myHeaders = new Headers();
@@ -602,10 +517,12 @@ function login() {
                     if (response.ok) {
                       
                         document.getElementById("divMensaje2").innerHTML = "Se le ha enviado un correo electrónico con las instrucciones para la recuperación.";
-                        document.getElementById("divMensaje2").style.backgroundColor = "green";
-                        document.getElementById("divMensaje2").style.color = "white";
-                        document.getElementById("divMensaje2").style.display = "inline-block";
-                        document.getElementById("divMensaje2").classList.add("col-md-12", "alert", "alert-success");
+                        document.getElementById("divMensaje2").className = "col-md-12 alert alert-success";
+                        document.getElementById("divMensaje2").style.display = "block";
+                        //document.getElementById("divMensaje2").style.backgroundColor = "green";
+                        //document.getElementById("divMensaje2").style.color = "white";
+                        //document.getElementById("divMensaje2").style.display = "inline-block";
+                        //document.getElementById("divMensaje2").classList.add("col-md-12", "alert", "alert-success");
 
                     } else {
                         
@@ -622,19 +539,25 @@ function login() {
                     document.getElementById("divMensaje2").style.display = "block";
                 });
         }
-
+        
     }
 
 
 
-    /*Limpiar Modal*/
-    const myModal = document.getElementById("Modal");
+        /*Limpiar Modal*/
+        const myModal = document.getElementById("Modal");
     function limpiarModal() {
-
+        /*console.log('Limpiando modal...');*/
         document.getElementById('txtRut').value = '';
         document.getElementById('selEmpresas').innerHTML = '';
         document.getElementById('divMensaje').style.display = 'none';
-        document.getElementById('divMensaje1').style.display = 'none';
+        document.getElementById('divMensaje2').style.display = 'none';
+        document.getElementById('divMensaje2').innerHTML = '';
+        document.getElementById("selEmpresas").options.selectedIndex = -1;
+        document.getElementById('btnEnviarRut').disabled = false;
+        document.getElementById('btnRecuperar').disabled = false;
+        //document.getElementById('divMensaje1').style.display = 'none';
+        /*document.getElementById('divMensaje1').innerHTML = '';*/
     }
 
     // Borrar Mensaje de error del input Rut
