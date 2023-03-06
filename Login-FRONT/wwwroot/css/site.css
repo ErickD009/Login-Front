@@ -17,3 +17,13 @@ body {
   margin-bottom: 60px;
 }
 
+.paddingTop {
+   padding-top:10px;
+}
+
+.card-title {
+    float: initial !important;
+    font-size: 1.1rem !important;
+    font-weight: 400 !important;
+    margin: 0!important;
+}

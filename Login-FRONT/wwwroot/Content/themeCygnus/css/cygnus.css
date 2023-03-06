@@ -54,3 +54,21 @@
 .azulCygnus {
     color: #0a6cb3 !important;
 }
+
+.paddingTop {
+    padding-top: 10px;
+}
+
+.card-title {
+    float: initial !important;
+    font-size: 1.1rem !important;
+    font-weight: 400 !important;
+    margin: 0 !important;
+    text-decoration: underline;
+}
+
+.card-subtitle {
+    padding-top: 25px;
+    float: initial !important;
+    font-size: 1.0rem !important;
+}

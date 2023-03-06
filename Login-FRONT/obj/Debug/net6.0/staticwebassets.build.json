@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HZF4A2184LJhmALpP/KxnDtqwLX1IzHtCSdVGGS8CHk=",
+  "Hash": "o/460JLvJcVlGVU/NaJDGNE/HiKNtd2VEPEj8a065/w=",
   "Source": "LoginFRONT",
   "BasePath": "_content/LoginFRONT",
   "Mode": "Default",
@@ -850,6 +850,23 @@
       "OriginalItemSpec": "wwwroot\\Content\\images\\comentario.png"
     },
     {
+      "Identity": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\Compras-icon.png",
+      "SourceId": "LoginFRONT",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\",
+      "BasePath": "_content/LoginFRONT",
+      "RelativePath": "Content/images/Compras-icon.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Content\\images\\Compras-icon.png"
+    },
+    {
       "Identity": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\Curricular-icon.jpg",
       "SourceId": "LoginFRONT",
       "SourceType": "Discovered",
@@ -899,6 +916,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Content\\images\\editarCalendario.png"
+    },
+    {
+      "Identity": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\exit-icon.gif",
+      "SourceId": "LoginFRONT",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\",
+      "BasePath": "_content/LoginFRONT",
+      "RelativePath": "Content/images/exit-icon.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Content\\images\\exit-icon.gif"
     },
     {
       "Identity": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\keys3.png",
@@ -1037,6 +1071,40 @@
       "OriginalItemSpec": "wwwroot\\Content\\images\\Maestro-icon.png"
     },
     {
+      "Identity": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\Maestro-icon1 (1).png",
+      "SourceId": "LoginFRONT",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\",
+      "BasePath": "_content/LoginFRONT",
+      "RelativePath": "Content/images/Maestro-icon1 (1).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Content\\images\\Maestro-icon1 (1).png"
+    },
+    {
+      "Identity": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\Maestro-icon1.png",
+      "SourceId": "LoginFRONT",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\",
+      "BasePath": "_content/LoginFRONT",
+      "RelativePath": "Content/images/Maestro-icon1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Content\\images\\Maestro-icon1.png"
+    },
+    {
       "Identity": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\pds.png",
       "SourceId": "LoginFRONT",
       "SourceType": "Discovered",
@@ -1086,6 +1154,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Content\\images\\seguimientoTrabajador.png"
+    },
+    {
+      "Identity": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\SGMWeb.png",
+      "SourceId": "LoginFRONT",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\",
+      "BasePath": "_content/LoginFRONT",
+      "RelativePath": "Content/images/SGMWeb.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Content\\images\\SGMWeb.png"
     },
     {
       "Identity": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\sort_asc.png",
@@ -1375,6 +1460,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Content\\images\\user2-160x160.jpg"
+    },
+    {
+      "Identity": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\Vacaciones-icon.png",
+      "SourceId": "LoginFRONT",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\",
+      "BasePath": "_content/LoginFRONT",
+      "RelativePath": "Content/images/Vacaciones-icon.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Content\\images\\Vacaciones-icon.png"
     },
     {
       "Identity": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\view.gif",

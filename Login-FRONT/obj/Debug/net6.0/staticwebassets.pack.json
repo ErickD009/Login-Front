@@ -169,6 +169,10 @@
       "PackagePath": "staticwebassets\\Content\\images\\09.gif"
     },
     {
+      "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\Compras-icon.png",
+      "PackagePath": "staticwebassets\\Content\\images\\Compras-icon.png"
+    },
+    {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\Curricular-icon.jpg",
       "PackagePath": "staticwebassets\\Content\\images\\Curricular-icon.jpg"
     },
@@ -179,6 +183,22 @@
     {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\Maestro-icon.png",
       "PackagePath": "staticwebassets\\Content\\images\\Maestro-icon.png"
+    },
+    {
+      "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\Maestro-icon1 (1).png",
+      "PackagePath": "staticwebassets\\Content\\images\\Maestro-icon1 (1).png"
+    },
+    {
+      "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\Maestro-icon1.png",
+      "PackagePath": "staticwebassets\\Content\\images\\Maestro-icon1.png"
+    },
+    {
+      "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\SGMWeb.png",
+      "PackagePath": "staticwebassets\\Content\\images\\SGMWeb.png"
+    },
+    {
+      "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\Vacaciones-icon.png",
+      "PackagePath": "staticwebassets\\Content\\images\\Vacaciones-icon.png"
     },
     {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\agregar.png",
@@ -215,6 +235,10 @@
     {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\editarCalendario.png",
       "PackagePath": "staticwebassets\\Content\\images\\editarCalendario.png"
+    },
+    {
+      "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\exit-icon.gif",
+      "PackagePath": "staticwebassets\\Content\\images\\exit-icon.gif"
     },
     {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\keys3.png",
