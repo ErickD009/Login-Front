@@ -143,24 +143,31 @@ function login_E() {
         .then(response => {
             if (!response.ok) {
                 throw new Error("Bad request");
+                document.getElementById("alertPass_2").style.display = "block";
+                document.getElementById("msjeAcceso").innerHTML = "Verifique sus credenciales y vuelva a intentarlo";
             }
             return response.json();
         })
         .then(result => {
-            console.log(result);
-            result = sistemas;
-            if (result.length == 0) {
-                document.getElementById("alertPass_2").style.display = "block";
-                document.getElementById("msjeAcceso").innerHTML = "No se encontraron datos para este usuario y contraseña.";
-            } else {
-                window.location.href = 'https://localhost:44304/InicioB/Index';
+            /*console.log(result);*/
+            sistemas = result;  
+            /*console.log('sistemas', sistemas);*/
+            console.log("Datos del arreglo sistemas:");
+            for (let i = 0; i < sistemas.length; i++) {
+                console.log("Elemento " + i + ":");
+                console.log(sistemas[i]);
             }
+            window.location.href = 'https://localhost:44304/InicioB/Index';
+
+     
         })
+
         .catch(error => {
             console.log('error', error);
             document.getElementById("alertPass_2").style.display = "block";
-            document.getElementById("msjeAcceso").innerHTML = "Se ha producido un error en la solicitud: " + error.message;
+            document.getElementById("msjeAcceso").innerHTML = "Verifique sus credenciales y vuelva a intentarlo";
         });
+    
 }
 
 
