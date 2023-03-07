@@ -27,3 +27,31 @@ body {
     font-weight: 400 !important;
     margin: 0!important;
 }
+
+.footer {
+    position: fixed;
+    bottom: 0px;
+    width: -webkit-fill-available;
+}
+
+
+.copy {
+    /*margin-top: auto;
+    margin-left: -416px;*/
+}
+
+.posicion {
+    /*margin-top: -1%;*/
+}
+
+.banner {
+    width: 100%;
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    margin-top: 1% !important;
+}
+
+.logo {
+    width: 15%;
+}

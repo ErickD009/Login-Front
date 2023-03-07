@@ -1,63 +1,63 @@
 ﻿
 
 
-//function LoginCygnus(url, data) {
+function LoginCygnus(url, data) {
 
-//    //alert(url);
-//    fetch(url, {
-//        method: 'POST', body: data
-//    })
-//        .then(res => res.json())
-//        .then(
-//            (result) => {
-//                /*console.log('datos',result);*/
-//                if (result.estadoSession == 0) {
-//                    document.getElementById('msjeAcceso').innerHTML = result.mensajeSession;
-//                    document.getElementById('alertPass').style.display = 'block';
-//                    $("#alertPass").fadeOut(3000);
-//                } else {
-//                    //document.getElementById('uxs').value = result.uxsUsuarioSession;
-//                    //document.getElementById('nombre').value = result.nombreUsuarioSession;
-//                    //document.getElementById('token').value = result.tokenSession;
-//                    console.log('dato', result.rutUsuarioSession, result.usrUsuarioSession, result.uxsUsuarioSession);
-//                    var rut = result.rutUsuarioSession;
-//                    var usr = result.usrUsuarioSession;
-//                    var uxs = result.uxsUsuarioSession;
-//                    var nombre = result.nombreUsuarioSession;
-//                    var token = result.tokenSession;
+    //alert(url);
+    fetch(url, {
+        method: 'POST', body: data
+    })
+        .then(res => res.json())
+        .then(
+            (result) => {
+                /*console.log('datos',result);*/
+                if (result.estadoSession == 0) {
+                    document.getElementById('msjeAcceso').innerHTML = result.mensajeSession;
+                    document.getElementById('alertPass').style.display = 'block';
+                    $("#alertPass").fadeOut(3000);
+                } else {
+                    //document.getElementById('uxs').value = result.uxsUsuarioSession;
+                    //document.getElementById('nombre').value = result.nombreUsuarioSession;
+                    //document.getElementById('token').value = result.tokenSession;
+                    console.log('dato', result.rutUsuarioSession, result.usrUsuarioSession, result.uxsUsuarioSession);
+                    var rut = result.rutUsuarioSession;
+                    var usr = result.usrUsuarioSession;
+                    var uxs = result.uxsUsuarioSession;
+                    var nombre = result.nombreUsuarioSession;
+                    var token = result.tokenSession;
 
-//                    inicio(rut, usr, uxs, nombre, token);
-//                    //traeMenu();
-//                }
-//            },
-//            (error) => {
-//                alert('error: ' + error);
-//            }
-//        )
-//        .catch((error) => console.log(error))
-//}
+                    inicio(rut, usr, uxs, nombre, token);
+                    //traeMenu();
+                }
+            },
+            (error) => {
+                alert('error: ' + error);
+            }
+        )
+        .catch((error) => console.log(error))
+}
 
 
-//function login() {
+function login() {
 
-//    var user = document.getElementById('txtUsuario').value;
-//    var pass = document.getElementById('txtPass').value;
-//    var sistema = 5; // cambiar id para el sistema que se cree
+    var user = document.getElementById('txtUsuario').value;
+    var pass = document.getElementById('txtPass').value;
+    var sistema = 5; // cambiar id para el sistema que se cree
 
-//    const data = new FormData();
-//    data.append('usuario', user);
-//    data.append('pass', pass);
-//    data.append('sistema', sistema);
+    const data = new FormData();
+    data.append('usuario', user);
+    data.append('pass', pass);
+    data.append('sistema', sistema);
 
-//    //var url = host() + 'Usuario/validaUsuario';
-//    //var url = origen() + 'Usuario/validaUsuario';
-//    var url = generico() + 'Usuario/validaUsuario ';
-//    /*var url = host() + 'Usuario/Usuario_Traer_Sistemas';*/
+    //var url = host() + 'Usuario/validaUsuario';
+    //var url = origen() + 'Usuario/validaUsuario';
+    var url = generico() + 'Usuario/validaUsuario ';
+    /*var url = host() + 'Usuario/Usuario_Traer_Sistemas';*/
 
-//    /*console.log(url, data);*/
-//    LoginCygnus(url, data);
+    /*console.log(url, data);*/
+    LoginCygnus(url, data);
 
-//}
+}
 
 //function login_E() {
 //    var sistemas = []
@@ -118,18 +118,72 @@
 
         //})
 
-function login_E() {
-    var sistemas = []
-    var user = document.getElementById('txtUsuario').value;
-    var pass = document.getElementById('txtPass').value;
+//function login_E() {
+//    var urlInicio = 'https://localhost:44304/InicioB/Index';
+//    var sistemas = []
+//    var user = document.getElementById('txtUsuario').value;
+//    var pass = document.getElementById('txtPass').value;
+//    var url = host() + 'Usuario/Usuario_Traer_Sistemas';
+
+//    var myHeaders = new Headers();
+//    myHeaders.append("Content-Type", "application/json");
+
+//    var raw = JSON.stringify({
+//        "USR_LOGIN": user,
+//        "USR_PASSWORD": pass
+//    });
+
+//    var requestOptions = {
+//        method: 'POST',
+//        headers: myHeaders,
+//        body: raw,
+//        redirect: 'follow'
+//    };
+
+//    fetch(url, requestOptions)
+//        .then(response => {
+//            if (!response.ok) {
+//                throw new Error("Bad request");
+//                document.getElementById("alertPass_2").style.display = "block";
+//                document.getElementById("msjeAcceso").innerHTML = "Verifique sus credenciales y vuelva a intentarlo";
+//            }
+//            return response.json();
+//        })
+//        .then(result => {
+//            console.log(result);
+//            sistemas = result;  
+//            console.log('sistemas', sistemas);
+//            console.log("Datos del arreglo sistemas:");
+//            for (let i = 0; i < sistemas.length; i++) {
+//                console.log("Elemento " + i + ":");
+//                console.log(sistemas[i]);
+//            }
+//            /*llenarMenu(sistemas);*/
+//            window.location.href = urlInicio;
+            
+//        })
+
+//        .catch(error => {
+//            console.log('error', error);
+//            document.getElementById("alertPass_2").style.display = "block";
+//            document.getElementById("msjeAcceso").innerHTML = "Verifique sus credenciales y vuelva a intentarlo";
+//        });
+
+//}
+
+function llenarMenu() {
     var url = host() + 'Usuario/Usuario_Traer_Sistemas';
+    var sistemas = [];
+    var usr = document.getElementById('usr').value;
+    var urlO = origen();
+    const nombreUsuario = document.getElementById('nombre').value;
+    document.getElementById('nombreUsuario').textContent = nombreUsuario;
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
-        "USR_LOGIN": user,
-        "USR_PASSWORD": pass
+        "usR_AUTOID": usr
     });
 
     var requestOptions = {
@@ -142,33 +196,197 @@ function login_E() {
     fetch(url, requestOptions)
         .then(response => {
             if (!response.ok) {
-                throw new Error("Bad request");
-                document.getElementById("alertPass_2").style.display = "block";
-                document.getElementById("msjeAcceso").innerHTML = "Verifique sus credenciales y vuelva a intentarlo";
             }
             return response.json();
+           
         })
         .then(result => {
             /*console.log(result);*/
-            sistemas = result;  
-            /*console.log('sistemas', sistemas);*/
-            console.log("Datos del arreglo sistemas:");
-            for (let i = 0; i < sistemas.length; i++) {
-                console.log("Elemento " + i + ":");
-                console.log(sistemas[i]);
-            }
-            window.location.href = 'https://localhost:44304/InicioB/Index';
+            sistemas = result;
 
-     
+            const container = document.querySelector('.col-md-9');
+
+            for (let i = 0; i < sistemas.length; i += 3) {
+
+                const row = document.createElement('div');
+                row.classList.add('row', 'paddingTop');
+
+                const colors = ['btn-secondary', 'btn-success', 'btn-info'];
+
+                for (let j = i; j < i + 3 && j < sistemas.length; j++) {
+                    const sistema = sistemas[j];
+
+                    const col = document.createElement('div');
+                    col.classList.add('col-md-4');
+
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.classList.add('btn', colors[j % colors.length], 'btn-block');
+                    btn.dataset.url = sistema.siS_URL;
+
+                    const img = document.createElement('img');
+                    img.src = sistema.siS_ICON_URL;
+                    img.alt = sistema.siS_DESCRIPCION;
+                    img.width = 16;
+                    img.height = 16;
+
+                    const span = document.createElement('span');
+                    span.textContent = ' ';
+
+                    const text = document.createTextNode(sistema.siS_DESCRIPCION);
+
+                    btn.appendChild(img);
+                    btn.appendChild(span);
+                    btn.appendChild(text);
+                    col.appendChild(btn);
+                    row.appendChild(col);
+
+                    btn.addEventListener('click', function () {
+                        window.open(this.dataset.url, '_blank');
+                    });
+                }
+
+
+                container.appendChild(row);
+            }
+
+            const lastRow = document.createElement('div');
+            lastRow.classList.add('row', 'paddingTop');
+
+            const lastCol = document.createElement('div');
+            lastCol.classList.add('col-md-4');
+
+            const btnCerrar = document.createElement('button');
+            btnCerrar.type = 'button';
+            btnCerrar.classList.add('btn', 'btn-danger', 'btn-block');
+
+            const textCerrar = document.createTextNode('Cerrar sesión');
+
+            btnCerrar.appendChild(textCerrar);
+            lastCol.appendChild(btnCerrar);
+            lastRow.appendChild(lastCol);
+            container.appendChild(lastRow);
+
+            btnCerrar.addEventListener('click', function () {
+                window.location.href = urlO;
+                document.getElementById('rut').value = '';
+                document.getElementById('usr').value = '';
+                document.getElementById('uxs').value = '';
+                document.getElementById('ulegajo').value = '';
+                document.getElementById('nombre').value = '';
+                document.getElementById('token').value = '';
+                document.getElementById('ucta').value = '';
+            });
+
+            /*console.log('sistemas', sistemas);*/
+
         })
 
         .catch(error => {
-            console.log('error', error);
-            document.getElementById("alertPass_2").style.display = "block";
-            document.getElementById("msjeAcceso").innerHTML = "Verifique sus credenciales y vuelva a intentarlo";
+            console.log('error', error);  
         });
+
     
+
 }
+
+function crearVersiones() {
+
+    var url = host() + 'Sistema/TraerVersiones';
+    var versiones = [];
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+        "sis_autoid": "0"
+    });
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch(url, requestOptions)
+        .then(response => {
+            if (!response.ok) {
+            }
+            return response.json();
+
+        })
+        .then(result => {
+            /*console.log(result);*/
+            versiones = result
+
+            var ultimasActualizacionesDiv = document.getElementById("ultimasVersiones");
+
+
+            ultimasActualizacionesDiv.innerHTML = "";
+
+            var titulo = document.createElement("h5");
+            titulo.className = "card-title";
+            titulo.style = "text-align: center;";
+            titulo.textContent = "Últimas actualizaciones";
+            titulo.style.fontWeight = "bold";
+            ultimasActualizacionesDiv.appendChild(titulo);
+
+            for (var i = 0; i < versiones.length; i++)
+            /*for (var i = 0; i < versiones.length && i < 3; i++)*/{
+            var version = versiones[i];
+
+
+                var card = document.createElement("div");
+                card.className = "card";
+                card.style = "background-color:#D5D4D48F;";
+
+
+                var cardHeader = document.createElement("div");
+                cardHeader.className = "card-header";
+                cardHeader.style.marginBottom = "0";
+
+                var cardTitle = document.createElement("h5");
+                cardTitle.className = "card-title";
+                cardTitle.style = "text-align: center;";
+
+                var cardSubtitle = document.createElement("h6");
+                cardSubtitle.className = "card-subtitle";
+                cardSubtitle.style = "text-align: center;";
+                cardSubtitle.innerHTML = version.sis_descripcion + "<br>" + version.ver_version + " - Disponible desde: " + version.ver_fecha;
+                cardSubtitle.style.marginBottom = "0";
+
+
+                var cardText = document.createElement("p");
+                cardText.className = "card-text text-center";
+                cardText.innerHTML = version.verdet_detalle_version;
+                cardText.style.marginTop = "0";
+                cardText.style.position = "relative";
+                cardText.style.position = "auto";
+                cardText.style.bottom = "0";
+
+
+                cardHeader.appendChild(cardTitle);
+                cardHeader.appendChild(cardSubtitle);
+                cardHeader.appendChild(cardText);
+                card.appendChild(cardHeader);
+                ultimasActualizacionesDiv.appendChild(card);
+
+                //card.addEventListener("click", function () {
+                //    if (cardText.style.height === "auto") {
+                //        cardText.style.height = "3em"; 
+                //    } 
+                //});
+            }
+
+            /*console.log('versiones', versiones)*/
+        })
+
+        .catch(error => console.log('error', error));
+
+}
+
+
 
 
 function ActualizarPass() {
@@ -466,7 +684,8 @@ function inicio(rut, usr, uxs, nombre, token) {
     //setTimeout(preguntar, 5000);
     //setInterval(preguntar(), 5000);
 
-    var url = origen() + 'Inicio/Index';
+    /*var url = origen() + 'Inicio/Index';*/
+    var url = origen() + 'InicioB/Index';
 
     var form = document.createElement('form');
     document.body.appendChild(form);

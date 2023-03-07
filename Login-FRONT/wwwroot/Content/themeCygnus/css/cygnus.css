@@ -72,3 +72,94 @@
     float: initial !important;
     font-size: 1.0rem !important;
 }
+
+.footer {
+    position: fixed;
+    bottom: 0px;
+    width: -webkit-fill-available;
+}
+
+
+.copy {
+    /*margin-top: auto;
+    margin-left: -416px;*/
+}
+
+.posicion {
+    /*margin-top: -1%;*/
+}
+
+.banner {
+    width: 100%;
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    margin-top: 1% !important;
+}
+
+.logo {
+    width: 15%;
+}
+
+.center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 185px;
+}
+
+@media (max-width:850px) {
+    .center-block {
+        width: 150px !important;
+    }
+}
+
+@media (max-width:750px) {
+    .center-block {
+        width: 140px !important;
+    }
+}
+
+@media (max-width:650px) {
+    .center-block {
+        width: 130px !important;
+    }
+}
+
+
+
+@media (max-width:450px) {
+    .center-block {
+        width: 120px !important;
+    }
+}
+
+@media (max-width:450px) {
+    .center-block {
+        width: 120px !important;
+    }
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 20px;
+}
+
+.logo-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-container {
+    flex-shrink: 0;
+}
+
+.boton {
+    justify-content: flex-end;
+}
+

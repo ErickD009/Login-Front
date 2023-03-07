@@ -25,110 +25,44 @@
 
 
 </head>
+<header>
+    <div class="header-container">
+        <div class="logo-container">
+            <img alt="Grupo Cygnus" src="~/Content/images/logotipoA.png" class="center-block" />
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary ml-auto">
+                Bienvenido, <span id="nombreUsuario"></span>
+            </button>
+        </div>
+    </div>
+</header>
 
 <body>
-
-    <div class="litle text-center">
-        <h4>Sistemas</h4>
-    </div>
+    <input type="hidden" id="rut" name="rut" value="@ViewBag.rutUsuario" />
+    <input type="hidden" id="usr" name="usr" value="@ViewBag.usrUsuario" />
+    <input type="hidden" id="uxs" name="uxs" value="@ViewBag.uxsUsuario" />
+    <input type="hidden" id="ulegajo" name="ulegajo" value="@ViewBag.legajoUsuario" />
+    <input type="hidden" id="nombre" name="nombre" value="@ViewBag.nomUsuario" />
+    <input type="hidden" id="token" name="token" value="@ViewBag.tokUsuario" />
+    <input type="hidden" id="ucta" name="ucta" value="@ViewBag.ctaUsuario" />
+    
+    
 
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-9">
-                <div class="row paddingTop">
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-primary btn-block">
-                            <img src="~/Content/images/Curricular-icon.jpg" alt="" width="16" height="16"> Curricular
-                        </button>
-                    </div>
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-info btn-block">
-                            <img src="~/Content/images/task-complete.png" alt="" width="18" height="18"> Evaluaciones Técnicas
-                        </button>
-                    </div>
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-success btn-block">
-                            <img src="~/Content/images/Maestro-icon.png" alt="" width="18" height="18">     Maestros Cygnus
-                        </button>
-                    </div>
-                </div>
-                <div class="row paddingTop">
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-primary btn-block">
-                            <img src="~/Content/images/powerBi.png" alt="" width="16" height="16"> PowerBI
-                        </button>
-                    </div>
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-info btn-block">
-                            <img src="~/Content/images/seguimientoTrabajador.png" alt="" width="18" height="18"> Seguimiento Trabajador
-                        </button>
-                    </div>
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-success btn-block">
-                            <img src="~/Content/images/SGMWeb.png" alt="" width="18" height="18"> SGM Maestro Web
-                        </button>
-                    </div>
-
-                </div>
-                <div class="row paddingTop">
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-primary btn-block">
-                            <img src="~/Content/images/Vacaciones-icon.png" alt="" width="16" height="16"> Vacaciones
-                        </button>
-                    </div>
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-info btn-block">
-                            <img src="~/Content/images/Compras-icon.png" alt="" width="18" height="18"> Validador de compras
-                        </button>
-                    </div>
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-success btn-block">
-                            <img src="~/Content/images/exit-icon.gif" alt="" width="18" height="18"> Cerrar Sesión
-                        </button>
-                    </div>
+                <div class="row paddingTop" id="botones">
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="row paddingTop">
+                <div class="row">
                     <div class="col-md-12">
                         <div class="card" style="background-color:#D5D4D48F; border: 1px solid #ccc; box-shadow: 0px 2px 4px #ddd; ">
-                            <div class="card-header">
-                                <h5 class="card-title" style="text-align: center;">Últimas actualizaciones</h5>
-                                <h6 class="card-subtitle" style="text-align: center;">
-                                    Repositorio Facturas
-                                    202303.1 - Disponible desde: 06-03-2023
-                                </h6>
-
-                                <p class="card-text paddingTop text-center">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed suscipit tellus ut faucibus suscipit.
-                                    Vivamus sit amet pharetra quam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                                    Donec imperdiet nec tortor vitae dignissim. Donec pulvinar, sapien vitae condimentum aliquam, quam lorem porttitor risus, vel dignissim elit sem vel arcu.
-                                    Ut id dui elementum, malesuada dui in, feugiat eros. Nam facilisis fermentum eros, sit amet vulputate leo vulputate at.
-                                    Morbi eget lorem pharetra justo pretium dictum vitae sed neque. Cras at lacus blandit ipsum facilisis interdum ut tincidunt tortor.
-                                    Phasellus suscipit tellus quis felis ultricies tempus. Cras dapibus lacus vel magna euismod, id condimentum massa gravida.
-                                    Vivamus at libero lobortis, facilisis ipsum non, posuere odio. Curabitur fermentum, libero ut mollis sollicitudin, massa sapien consequat tellus, et consectetur sem felis vitae ipsum.
-                                    Etiam aliquet viverra ultrices. Donec nec tellus in quam porttitor lobortis eu at velit. Aliquam vel aliquam est.
-
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Nullam sed semper sapien. Donec in dictum ex, vel cursus lectus. Curabitur sed dui felis.
-                                    Donec sollicitudin dolor vitae dolor venenatis vestibulum. Sed nisi neque, pulvinar nec viverra vel, interdum et lorem.
-                                    Ut pellentesque felis ac pellentesque tincidunt. Cras porttitor dolor in felis rhoncus, dignissim efficitur turpis sagittis.
-                                    Nulla consectetur ligula in nibh ultricies, eget pretium elit condimentum. Phasellus condimentum augue id egestas mattis.
-                                    Etiam a tincidunt turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                                    Vestibulum rhoncus sem nec quam imperdiet, non lacinia sapien mattis.
-
-                                    Integer ultricies neque eu neque imperdiet cursus.
-                                    Morbi quis ante molestie, porta orci vel, finibus enim. Sed nunc mauris, porta ac auctor ut, laoreet in lacus.
-                                    Sed mollis nibh eu diam scelerisque pharetra. Aenean pulvinar, dolor sed volutpat dapibus, libero sapien scelerisque odio, et ultricies neque nunc eget felis.
-                                    Vivamus porttitor nisl et ex dictum, quis vestibulum ante elementum. Suspendisse rutrum sem a magna egestas, vel fringilla velit egestas.
-                                    Aliquam semper turpis at purus sagittis rutrum. Cras vel maximus augue, rhoncus malesuada urna. Integer rhoncus elit in accumsan auctor.
-                                    Sed vel felis dolor. Sed fermentum fermentum urna at consequat. Curabitur a consectetur leo, vel imperdiet urna. Sed pulvinar ipsum risus, in varius leo luctus ut.
-                                    Sed pellentesque felis lacus, ut ullamcorper neque rhoncus finibus. Sed vitae justo orci.
-                                </p>
-
-
+                            <div class="card-header" id="ultimasVersiones">
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -136,5 +70,19 @@
 
     </div>
 
+    <footer class="d-flex justify-content-center flex-wrap align-items-center bg-light footer">
+        <img alt="Grupo Cygnus" src="~/Content/images/logotipoA.png" class="logo" />
+        <p class="posicion fs-5 px-3  pt-3 text-muted">Argomedo 302 Santiago</p>
+        <p class="posicion fs-5 px-3  pt-3 text-muted">+56 2 2733 7500</p>
+        <p class="posicion fs-5 px-3  pt-3 text-muted">contacto@cygnus.cl</p>
+        <p class="copy fs-5 px-3  pt-3 text-muted">Grupo Cygnus2012 &copy; Todos Los Derechos Reservados</p> 
+    </footer>
 
+<script>
+    window.onload = function () {
+        llenarMenu();
+        crearVersiones();
+    };
+</script>
 </body>
+
