@@ -241,6 +241,10 @@
       "PackagePath": "staticwebassets\\Content\\images\\exit-icon.gif"
     },
     {
+      "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\gear.png",
+      "PackagePath": "staticwebassets\\Content\\images\\gear.png"
+    },
+    {
       "Id": "D:\\Proyectos Git Erick\\Login New\\Login-FRONT\\Login-FRONT\\wwwroot\\Content\\images\\keys3.png",
       "PackagePath": "staticwebassets\\Content\\images\\keys3.png"
     },
