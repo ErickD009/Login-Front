@@ -58,6 +58,77 @@ function login() {
 
 }
 
+function login_B() {
+    var usr = ''
+    var nombre = ''
+    var user = document.getElementById('txtUsuario').value;
+    var pass = document.getElementById('txtPass').value;
+    var url = host() + 'Usuario/Usuario_Validar';
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+        "usR_PASSWORD": pass,
+        "usR_RUT": user
+    });
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch(url, requestOptions)
+        .then(response => {
+            if (response.status === 400) {
+                document.getElementById("msjeAcceso").innerHTML = "Error, verifique sus credenciales";
+                document.getElementById("alertPass").style.display = "block";
+                return;
+            }
+            if (!response.ok) {
+            }
+            return response.json();
+
+        })
+        .then(result => {
+            usr = result.usR_AUTOID;
+            nombre = result.usR_NOMBRE;
+            console.log('nombre', nombre)
+            console.log('usr', usr)
+
+            inicio_B(usr, nombre);
+
+        })
+        .catch(error => console.log('error', error));
+}
+
+function inicio_B(usr, nombre) {
+
+    var url = origen() + 'InicioB/Index';
+
+    var form = document.createElement('form');
+    document.body.appendChild(form);
+    form.method = 'post';
+    form.action = url;
+
+    var inputUsr = document.createElement('input');
+    inputUsr.type = 'hidden';
+    inputUsr.name = 'usrUsuario';
+    inputUsr.value = usr;
+    form.appendChild(inputUsr);
+
+
+    var inputNom = document.createElement('input');
+    inputNom.type = 'hidden';
+    inputNom.name = 'nomUsuario';
+    inputNom.value = nombre;
+    form.appendChild(inputNom);
+
+    form.submit();
+}
+
 function llenarMenu() {
     var url = host() + 'Usuario/Usuario_Traer_Sistemas';
     var sistemas = [];
@@ -91,128 +162,124 @@ function llenarMenu() {
             /*console.log(result);*/
             sistemas = result;
 
-                const container = document.querySelector('.col-md-9');
-                const imagenDefault = '/Content/images/gear.png';
-                const exitImagen = '/Content/images/exit-icon.gif';
 
-                for (let i = 0; i < sistemas.length; i += 3) {
+            const container = document.querySelector('.col-md-12');
+            const imagenDefault = '/Content/images/gear.png';
+            const exitImagen = '/Content/images/exit-icon.gif';
 
-                    const row = document.createElement('div');
-                    row.classList.add('row', 'paddingTop');
+            for (let i = 0; i < sistemas.length; i += 4) {
 
-                    const colors = ['btn-secondary', 'btn-success', 'btn-info'];
+                const row = document.createElement('div');
+                row.classList.add('row', 'paddingTop');
 
-                    for (let j = i; j < i + 3 && j < sistemas.length; j++) {
-                        const sistema = sistemas[j];
+                const colors = ['btn-secondary', 'btn-success', 'btn-info'];
 
-                        const col = document.createElement('div');
-                        col.classList.add('col-md-4');
+                for (let j = i; j < i + 4 && j < sistemas.length; j++) {
+                    const sistema = sistemas[j];
 
-                        const btn = document.createElement('button');
-                        btn.type = 'button';
-                        btn.classList.add('btn', colors[j % colors.length], 'btn-block');
-                        btn.dataset.url = sistema.siS_URL;
+                    const col = document.createElement('div');
+                    col.classList.add('col-md-3');
 
-                        const img = document.createElement('img');
-                        //img.src = sistema.siS_ICON_URL;
-                        //img.alt = sistema.siS_DESCRIPCION;
-                        //img.width = 16;
-                        //img.height = 16;
-                        if (sistema.siS_ICON_URL) {
-                            img.src = sistema.siS_ICON_URL;
-                            img.alt = sistema.siS_DESCRIPCION;
-                            img.width = 16;
-                            img.height = 16;
-                        } else {
-                            img.src = imagenDefault;
-                            img.alt = 'Imagen';
-                            img.width = 16;
-                            img.height = 16;
-                        }
-                        //} else {
-                        //    img.style.display = 'none';
-                        //}
-                    
-                        const span = document.createElement('span');
-                        span.textContent = ' ';
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.classList.add('btn', colors[j % colors.length], 'btn-block');
+                    btn.dataset.url = sistema.siS_URL;
 
-                        const text = document.createTextNode(sistema.siS_DESCRIPCION);
+                    const img = document.createElement('img');
 
-                        btn.appendChild(img);
-                        btn.appendChild(span);
-                        btn.appendChild(text);
-                        col.appendChild(btn);
-                        row.appendChild(col);
-
-                        btn.addEventListener('click', function () {
-                            window.open(this.dataset.url, '_blank');
-                        });
+                    if (sistema.siS_ICON_URL) {
+                        img.src = sistema.siS_ICON_URL;
+                        img.alt = sistema.siS_DESCRIPCION;
+                        img.width = 16;
+                        img.height = 16;
+                    } else {
+                        img.src = imagenDefault;
+                        img.alt = 'Imagen';
+                        img.width = 16;
+                        img.height = 16;
                     }
 
+                    const span = document.createElement('span');
+                    span.textContent = ' ';
 
-                    container.appendChild(row);
+                    const text = document.createTextNode(sistema.siS_DESCRIPCION);
+
+                    btn.appendChild(img);
+                    btn.appendChild(span);
+                    btn.appendChild(text);
+                    col.appendChild(btn);
+                    row.appendChild(col);
+
+                    if (j === sistemas.length - 1) {
+                        btn.setAttribute('id', 'btnVersiones');
+                    }
+
+                    btn.addEventListener('click', function () {
+                        window.open(this.dataset.url, '_blank');
+                    });
                 }
 
-                const lastRow = document.createElement('div');
-                lastRow.classList.add('row', 'paddingTop');
+                container.appendChild(row);
+            }
 
-                const lastCol = document.createElement('div');
-                lastCol.classList.add('col-md-4');
+           
+            const lastRow = document.createElement('div');
+            lastRow.classList.add('row', 'paddingTop');
 
-                const btnCerrar = document.createElement('button');
-                btnCerrar.type = 'button';
-                btnCerrar.classList.add('btn', 'btn-danger', 'btn-block');
+            
+            const colors = ['btn-dark', 'btn-danger'];
 
-                const imgCerrar = document.createElement('img');
-                imgCerrar.src = exitImagen;
-                imgCerrar.alt = 'Cerrar sesión';
-                imgCerrar.width = 16;
-                imgCerrar.height = 16;
+          
+            for (let k = 0; k < 2; k++) {
+                const col = document.createElement('div');
+                col.classList.add('col-md-3');
 
-            const textCerrar = document.createTextNode('Cerrar sesión');
-            const spanCerrar = document.createElement('span');
-            spanCerrar.textContent = ' ';
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.classList.add('btn', colors[k % colors.length], 'btn-block');
 
-                btnCerrar.appendChild(imgCerrar);
-                btnCerrar.appendChild(spanCerrar);
-                btnCerrar.appendChild(textCerrar);
-                lastCol.appendChild(btnCerrar);
-                lastRow.appendChild(lastCol);
-                container.appendChild(lastRow);
+                const span = document.createElement('span');
+                span.textContent = k === 0 ? 'Versiones' : 'Cerrar sesión';
 
-                btnCerrar.addEventListener('click', function () {
-                    window.location.href = urlO;
-                    document.getElementById('rut').value = '';
-                    document.getElementById('usr').value = '';
-                    document.getElementById('uxs').value = '';
-                    document.getElementById('ulegajo').value = '';
-                    document.getElementById('nombre').value = '';
-                    document.getElementById('token').value = '';
-                    document.getElementById('ucta').value = '';
+                btn.appendChild(span);
+                col.appendChild(btn);
+                lastRow.appendChild(col);
+
+               
+                btn.addEventListener('click', function () {
+                    if (k === 0) {
+                       
+                        const versionesModal = new bootstrap.Modal(document.getElementById('staticBackdrop'), {});
+                        versionesModal.show();
+                    } else {
+
+                        window.location.href = urlO;
+                        document.getElementById('uxs').value = '';
+                        document.getElementById('nombre').value = '';
+                    }
                 });
+            }
 
-                /*console.log('sistemas', sistemas);*/
+            container.appendChild(lastRow);
 
-            })
-
-            .catch(error => {
-                console.log('error', error);
-            });
-
-
+            
+        })
 
 }
 
-function crearVersiones() {
-
-    var url = host() + 'Sistema/TraerVersiones';
-    var versiones = [];
+function llenarMenu2() {
+    var url = host() + 'Usuario/Usuario_Traer_Sistemas';
+    var sistemas = [];
+    var usr = document.getElementById('usr').value;
+    var urlO = origen();
+    const nombreUsuario = document.getElementById('nombre').value;
+    document.getElementById('nombreUsuario').textContent = nombreUsuario;
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
-        "sis_autoid": "0"
+        "usR_AUTOID": usr
     });
 
     var requestOptions = {
@@ -222,7 +289,7 @@ function crearVersiones() {
         redirect: 'follow'
     };
 
-    fetch(url, requestOptions)
+        fetch(url, requestOptions)
         .then(response => {
             if (!response.ok) {
             }
@@ -230,71 +297,197 @@ function crearVersiones() {
 
         })
         .then(result => {
-            /*console.log(result);*/
-            versiones = result
+        /*console.log(result);*/
+        sistemas = result;
 
-            var ultimasActualizacionesDiv = document.getElementById("ultimasVersiones");
+        const container = document.querySelector('.col-md-9');
+        const imagenDefault = '/Content/images/gear.png';
+        const exitImagen = '/Content/images/exit-icon.gif';
 
-            ultimasActualizacionesDiv.innerHTML = "";
+        for (let i = 0; i < sistemas.length; i += 3) {
 
-            var titulo = document.createElement("h5");
-            titulo.className = "card-title";
-            titulo.style = "text-align: center;";
-            titulo.textContent = "Últimas actualizaciones";
-            titulo.style.fontWeight = "bold";
-            ultimasActualizacionesDiv.appendChild(titulo);
+            const row = document.createElement('div');
+            row.classList.add('row', 'paddingTop');
 
-            /*for (var i = 0; i < versiones.length; i++)*/
-            for (var i = 0; i < versiones.length && i < 3; i++) {
-                var version = versiones[i];
+            const colors = ['btn-secondary', 'btn-success', 'btn-info'];
 
+            for (let j = i; j < i + 3 && j < sistemas.length; j++) {
+                const sistema = sistemas[j];
 
-                var card = document.createElement("div");
-                card.className = "card";
-                card.style = "background-color:#D5D4D48F;";
+                const col = document.createElement('div');
+                col.classList.add('col-md-4');
 
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.classList.add('btn', colors[j % colors.length], 'btn-block');
+                btn.dataset.url = sistema.siS_URL;
 
-                var cardHeader = document.createElement("div");
-                cardHeader.className = "card-header";
-                cardHeader.style.marginBottom = "0";
+                const img = document.createElement('img');
 
-                var cardTitle = document.createElement("h5");
-                cardTitle.className = "card-title";
-                cardTitle.style = "text-align: center;";
-
-                var fecha = version.ver_fecha.substring(0, 10);
-
-                var cardSubtitle = document.createElement("h6");
-                cardSubtitle.className = "card-subtitle";
-                cardSubtitle.style = "text-align: center;";
-                cardSubtitle.innerHTML = version.sis_descripcion + "<br>" + version.ver_version + " - Disponible desde : " + fecha;
-                cardSubtitle.style.marginBottom = "0";
-
-
-                var cardText = document.createElement("p");
-                cardText.className = "card-text text-center";
-                cardText.innerHTML = version.verdet_detalle_version;
-                cardText.style.marginTop = "0";
-                /*cardText.style.position = "relative";*/
-                cardText.style.position = "auto";
-                //cardText.style.bottom = "0";
+                if (sistema.siS_ICON_URL) {
+                    img.src = sistema.siS_ICON_URL;
+                    img.alt = sistema.siS_DESCRIPCION;
+                    img.width = 16;
+                    img.height = 16;
+                } else {
+                    img.src = imagenDefault;
+                    img.alt = 'Imagen';
+                    img.width = 16;
+                    img.height = 16;
+                }
 
 
-                cardHeader.appendChild(cardTitle);
-                cardHeader.appendChild(cardSubtitle);
-                cardHeader.appendChild(cardText);
-                card.appendChild(cardHeader);
-                ultimasActualizacionesDiv.appendChild(card);
+                const span = document.createElement('span');
+                span.textContent = ' ';
 
+                const text = document.createTextNode(sistema.siS_DESCRIPCION);
 
+                btn.appendChild(img);
+                btn.appendChild(span);
+                btn.appendChild(text);
+                col.appendChild(btn);
+                row.appendChild(col);
+
+                btn.addEventListener('click', function () {
+                    window.open(this.dataset.url, '_blank');
+                });
             }
 
-            /*console.log('versiones', versiones)*/
-        })
 
-        .catch(error => console.log('error', error));
+            container.appendChild(row);
+        }
+
+        const lastRow = document.createElement('div');
+        lastRow.classList.add('row', 'paddingTop');
+
+        const lastCol = document.createElement('div');
+        lastCol.classList.add('col-md-4');
+
+        const btnCerrar = document.createElement('button');
+        btnCerrar.type = 'button';
+        btnCerrar.classList.add('btn', 'btn-danger', 'btn-block');
+
+        const imgCerrar = document.createElement('img');
+        imgCerrar.src = exitImagen;
+        imgCerrar.alt = 'Cerrar sesión';
+        imgCerrar.width = 16;
+        imgCerrar.height = 16;
+
+        const textCerrar = document.createTextNode('Cerrar sesión');
+        const spanCerrar = document.createElement('span');
+        spanCerrar.textContent = ' ';
+
+        btnCerrar.appendChild(imgCerrar);
+        btnCerrar.appendChild(spanCerrar);
+        btnCerrar.appendChild(textCerrar);
+        lastCol.appendChild(btnCerrar);
+        lastRow.appendChild(lastCol);
+        container.appendChild(lastRow);
+
+        btnCerrar.addEventListener('click', function () {
+            window.location.href = urlO;
+            document.getElementById('usr').value = '';
+            document.getElementById('uxs').value = '';
+            document.getElementById('nombre').value = '';
+        });
+
+        
+        /*console.log('sistemas', sistemas);*/
+
+    })
+
+    .catch(error => {
+        console.log('error', error);
+    });
 
 }
+
+//function crearVersiones() {
+
+//    var url = host() + 'Sistema/TraerVersiones';
+//    var versiones = [];
+
+//    var myHeaders = new Headers();
+//    myHeaders.append("Content-Type", "application/json");
+
+//    var raw = JSON.stringify({
+//        "sis_autoid": "0"
+//    });
+
+//    var requestOptions = {
+//        method: 'POST',
+//        headers: myHeaders,
+//        body: raw,
+//        redirect: 'follow'
+//    };
+
+//    fetch(url, requestOptions)
+//        .then(response => {
+//            if (!response.ok) {
+//            }
+//            return response.json();
+
+//        })
+//        .then(result => {
+//            /*console.log(result);*/
+//            versiones = result
+
+//            var ultimasActualizacionesDiv = document.getElementById("ultimasVersiones");
+
+//            ultimasActualizacionesDiv.innerHTML = "";
+
+//            var titulo = document.createElement("h5");
+//            titulo.className = "card-title";
+//            titulo.style = "text-align: center;";
+//            titulo.textContent = "Últimas actualizaciones";
+//            titulo.style.fontWeight = "bold";
+//            ultimasActualizacionesDiv.appendChild(titulo);
+
+//            for (var i = 0; i < versiones.length && i < 3; i++) {
+//                var version = versiones[i];
+
+//                var card = document.createElement("div");
+//                card.className = "card";
+//                card.style = "background-color:#D5D4D48F;";
+
+//                var cardHeader = document.createElement("div");
+//                cardHeader.className = "card-header";
+//                // Agregamos una regla CSS para reducir el padding del cardHeader
+//                cardHeader.style.padding = "10px 10px 5px 10px";
+
+//                var cardTitle = document.createElement("h5");
+//                cardTitle.className = "card-title";
+//                cardTitle.style = "text-align: center;";
+
+//                var fecha = version.ver_fecha.substring(0, 10);
+
+//                var cardSubtitle = document.createElement("h6");
+//                cardSubtitle.className = "card-subtitle";
+//                cardSubtitle.style = "text-align: center;";
+//                cardSubtitle.innerHTML = version.sis_descripcion + "<br>" + version.ver_version + " - Disponible desde : " + fecha;
+//                cardSubtitle.style.marginBottom = "0";
+
+//                var cardText = document.createElement("p");
+//                cardText.className = "card-text text-left";
+//                cardText.innerHTML = version.verdet_detalle_version;
+//                cardText.style.marginTop = "0";
+//                cardText.style.position = "auto";
+//                cardText.style.fontSize = "14px";
+
+//                cardHeader.appendChild(cardTitle);
+//                cardHeader.appendChild(cardSubtitle);
+//                cardHeader.appendChild(cardText);
+//                card.appendChild(cardHeader);
+//                ultimasActualizacionesDiv.appendChild(card);
+//            }
+
+
+//            /*console.log('versiones', versiones)*/
+//        })
+
+//        .catch(error => console.log('error', error));
+
+//}
 
 function versionesModal() {
 
@@ -365,7 +558,7 @@ function versionesModal() {
 
 
                 var cardText = document.createElement("p");
-                cardText.className = "card-text text-center";
+                cardText.className = "card-text text-align-initial";
                 cardText.innerHTML = version.verdet_detalle_version;
                 cardText.style.marginTop = "0";
                 /*cardText.style.position = "relative";*/
@@ -395,6 +588,7 @@ function ActualizarPass() {
     var USR_PASS1 = document.getElementById("txtNewPass").value;
     var USR_PASS2 = document.getElementById("txtNewPassRep").value;
     var USR_RUT = document.getElementById("txtEnRut").value;
+    var USR_TOK = document.getElementById("textEnTok").value;
     var mensaje = document.getElementById("divMensaje3");
     var mensaje2 = document.getElementById("divMensaje4");
 

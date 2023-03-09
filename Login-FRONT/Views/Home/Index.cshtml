@@ -1,5 +1,5 @@
 ﻿@{
-  Layout = null;
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -7,130 +7,130 @@
 <html>
 
 <head>
-  <meta name="viewport" content="width=device-width" />
-  <title>Grupo Cygnus | Acceso a Sistemas</title>
-  <link rel="icon" type="image/png" href="~/Content/images/unnamed.png" />
-  <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-  <!--<link href="~/Content/Site.css" rel="stylesheet" />-->
-  <!--<link href="~/Content/layout.css"/>-->
-  @*<link href="~/Content/bootstrap.min_new.css" rel="stylesheet" />*@
-  <link href="~/css/login.css" rel="stylesheet" />
-  @*<link href="~/Content/bootstrap.css"/>*@
+    <meta name="viewport" content="width=device-width" />
+    <title>Grupo Cygnus | Acceso a Sistemas</title>
+    <link rel="icon" type="image/png" href="~/Content/images/unnamed.png" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <!--<link href="~/Content/Site.css" rel="stylesheet" />-->
+    <!--<link href="~/Content/layout.css"/>-->
+    @*<link href="~/Content/bootstrap.min_new.css" rel="stylesheet" />*@
+    <link href="~/css/login.css" rel="stylesheet" />
+    @*<link href="~/Content/bootstrap.css"/>*@
 
- 
 
-  <script src="~/js/cygnus-base.js"></script>
-  <script src="~/js/route.js"></script>
-  <script src="~/Content/js/bootstrap.bundle.min.js"></script>
-  
 
-  @*<script type="text/javascript">
-  function login() {
-  window.location.href = "/Home/Index";
-  }
-  </script>*@
+    <script src="~/js/cygnus-base.js"></script>
+    <script src="~/js/route.js"></script>
+    <script src="~/Content/js/bootstrap.bundle.min.js"></script>
+
+
+    @*<script type="text/javascript">
+    function login() {
+    window.location.href = "/Home/Index";
+    }
+    </script>*@
 </head>
 
-    <body>
-      <div>
+<body>
+    <div>
         <img alt="Grupo Cygnus" src="~/Content/images/logotipoA.png" class="center-block" />
-      </div>
+    </div>
 
-                                                  <!-- Login -->
-  <input type="hidden" id="hdRsp" value="0" />
-  <input type="hidden" id="txtCorreo" value="0" />
-  @*Valor en minutos del tiempo de bloqueo para recuperacion de clave *@
-  <input type="hidden" id="txtminutosRecuperacionPass" value="60">
+    <!-- Login -->
+    <input type="hidden" id="hdRsp" value="0" />
+    <input type="hidden" id="txtCorreo" value="0" />
+    @*Valor en minutos del tiempo de bloqueo para recuperacion de clave *@
+    <input type="hidden" id="txtminutosRecuperacionPass" value="60">
 
-  <div class="container well contenedor">
-    <div class="row">
-      <div class="col text-center">
-        <h4>Acceso Sistema</h4>
+    <div class="container well contenedor">
+        <div class="row">
+            <div class="col text-center">
+                <h4>Acceso Sistema</h4>
+                <br>
+            </div>
+        </div>
+        <form id="form1" class="form-horizontal">
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input name="txtUsuario" id="txtUsuario" type="text" class="form-control" placeholder="Rut" runat="server" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input name="txtPass" id="txtPass" type="password" class="form-control" placeholder="Contraseña"
+                           runat="server" />
+                </div>
+            </div>
+            <div class="form-group">
+                <Button ID="btnLoad" class="btn btn-primary center-block" onclick="login_B(); return false">Ingresar</Button>
+            </div>
+            <div class="col text-center">
+                <a href="#" class="btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#Modal">¿Ha olvidado su contraseña?</a>
+            </div>
+        </form>
         <br>
-      </div>
-    </div>
-    <form id="form1" class="form-horizontal">
-      <div class="form-group">
-        <div class="col-sm-10">
-          <input name="txtUsuario" id="txtUsuario" type="text" class="form-control" placeholder="Rut" runat="server" />
+        <div id="alertPass" class="col-md-12 alert alert-warning" style="display:none; width: auto; margin: 0 auto;">
+            <span id="msjeAcceso"></span>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-10">
-          <input name="txtPass" id="txtPass" type="password" class="form-control" placeholder="Contraseña"
-            runat="server" />
-        </div>
-      </div>
-      <div class="form-group">
-        <Button ID="btnLoad" class="btn btn-primary center-block" onclick="login(); return false">Ingresar</Button>
-      </div>
-      <div class="col text-center">
-        <a href="#" class="btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#Modal">¿Ha olvidado su contraseña?</a>
-      </div>
-    </form>
-    <br>
-    <div id="alertPass" class="alert alert-warning" style="display:none; width: 400px; margin: 0 auto;">
-      <span id="msjeAcceso"></span>
     </div>
-  </div>
 
-                                            <!-- Modal -->
+    <!-- Modal -->
 
     <div class="modal fade" id="Modal" tabindex="-1" data-bs-backdrop="static" role="dialog" aria-labelledby="modalTitulo" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modalContenido">
-          <div class="modalheader">
-            <h5 class="modal-title text-center w-100" style="color: #fffefe;" id="modalTitulo">Recuperacion de Contraseña</h5>
-            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" onclick="limpiarModal()">x</button>
-          </div>
-          <div class="modal-body">
-            <div class="input-group">
-                <p>Ingrese su rut e incluya el dígito verificador.</p>
-                <input type="text" class="inputRut" id="txtRut" placeholder="Ejemplo: 12345678k">&nbsp;
-                <div class="input-group-append">
-                    <button class="btn btn-primary rounded-start boton_rut" type="button" id="btnEnviarRut" onclick="enviarRut()">Buscar</button>                  
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modalContenido">
+                <div class="modalheader">
+                    <h5 class="modal-title text-center w-100" style="color: #fffefe;" id="modalTitulo">Recuperacion de Contraseña</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" onclick="limpiarModal()">x</button>
                 </div>
-                
-            </div>
-            <br>
-            <div class="row">
-                <div id="divMensaje" class="col-md-12 alert alert-danger" style="display:none;"></div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="row">
-                <div id="divMensaje2" class="col-md-12 alert alert-danger" style="display:none;"></div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="input-group">
-                <p>Indique la empresa a la que está asignado.</p><br />
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <select id="selEmpresas" class="selEmpresas" size="5"></select>
-                </div>
-            </div>
-          </div>
-          <div class="modalFooter">
-            <button type="button" ID="btnRecuperar" class="btn btn-primary" onclick="recuperarPass()">Recuperar Contraseña</button>
-          </div>
-        </div>
-      </div>
-    </div>
-                                                 <!-- Footer -->
+                <div class="modal-body">
+                    <div class="input-group">
+                        <p>Ingrese su rut e incluya el dígito verificador.</p>
+                        <input type="text" class="inputRut" id="txtRut" placeholder="Ejemplo: 12345678k">&nbsp;
+                        <div class="input-group-append">
+                            <button class="btn btn-primary rounded-start boton_rut" type="button" id="btnEnviarRut" onclick="enviarRut()">Buscar</button>
+                        </div>
 
-    
-      <footer class="d-flex justify-content-center flex-wrap align-items-center bg-light footer">
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div id="divMensaje" class="col-md-12 alert alert-danger" style="display:none;"></div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="row">
+                        <div id="divMensaje2" class="col-md-12 alert alert-danger" style="display:none;"></div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="input-group">
+                        <p>Indique la empresa a la que está asignado.</p><br />
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select id="selEmpresas" class="selEmpresas" size="5"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modalFooter">
+                    <button type="button" ID="btnRecuperar" class="btn btn-primary" onclick="recuperarPass()">Recuperar Contraseña</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+
+
+    <footer class="d-flex justify-content-center flex-wrap align-items-center bg-light footer">
         <img alt="Grupo Cygnus" src="~/Content/images/logotipoA.png" class="logo" />
         <p class="posicion fs-5 px-3  pt-3 text-muted">Argomedo 302 Santiago</p>
         <p class="posicion fs-5 px-3  pt-3 text-muted">+56 2 2733 7500</p>
         <p class="posicion fs-5 px-3  pt-3 text-muted">contacto@cygnus.cl</p>
-        <p class="copy fs-5 px-3  pt-3 text-muted">Grupo Cygnus2012 &copy; Todos Los Derechos Reservados</p> 
-      </footer>
+        <p class="copy fs-5 px-3  pt-3 text-muted">Grupo Cygnus2012 &copy; Todos Los Derechos Reservados</p>
+    </footer>
 
-        <script>
-        
-        </script>
-    </body>
+    <script>
+
+    </script>
+</body>
 
 
 </html>

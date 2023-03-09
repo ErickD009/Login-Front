@@ -29,7 +29,7 @@
     <div class="header-container">
         <div>
             @*<button type="button" class="btn-outline-success">
-                Bienvenido, <span id="nombreUsuario"></span>
+            Bienvenido, <span id="nombreUsuario"></span>
             </button>*@
         </div>
         <div class="logo-container">
@@ -40,48 +40,46 @@
 </header>
 
 <body>
-    <input type="hidden" id="rut" name="rut" value="@ViewBag.rutUsuario" />
+    @*<input type="hidden" id="rut" name="rut" value="@ViewBag.rutUsuario" />*@
     <input type="hidden" id="usr" name="usr" value="@ViewBag.usrUsuario" />
-    <input type="hidden" id="uxs" name="uxs" value="@ViewBag.uxsUsuario" />
-    <input type="hidden" id="ulegajo" name="ulegajo" value="@ViewBag.legajoUsuario" />
+    @* <input type="hidden" id="uxs" name="uxs" value="@ViewBag.uxsUsuario" />*@
+    @*<input type="hidden" id="ulegajo" name="ulegajo" value="@ViewBag.legajoUsuario" />*@
     <input type="hidden" id="nombre" name="nombre" value="@ViewBag.nomUsuario" />
-    <input type="hidden" id="token" name="token" value="@ViewBag.tokUsuario" />
-    <input type="hidden" id="ucta" name="ucta" value="@ViewBag.ctaUsuario" />
-
-
+    @*<input type="hidden" id="token" name="token" value="@ViewBag.tokUsuario" />
+    <input type="hidden" id="ucta" name="ucta" value="@ViewBag.ctaUsuario" />*@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-9">
-                <button type="button" class="btn-outline-success">
-                    Bienvenido, <span id="nombreUsuario"></span>
+            <div class="col-md-12">
+                <button type="button" class="btn-outline-success" style="border:none; background:none; color:grey;">
+                    BIENVENIDO, <span id="nombreUsuario" style:"font-weight:bold;"></span>
                 </button>
                 <div class="row paddingTop" id="botones">
                 </div>
             </div>
-            <div class="col-md-3">
+            @*<div class="col-md-3">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card" style="background-color:#D5D4D48F; border: 1px solid #ccc; box-shadow: 0px 2px 4px #ddd; ">
                             <div class="card-header" id="ultimasVersiones">
                             </div>
                         </div>
-                        
+
                         <div class="col text-center">
                             <a href="#" class="btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ver más</a>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*@
         </div>
 
     </div>
 
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                
+
                 <div class="modal-header ">
                     <h5 class="modal-title" id="staticBackdropLabel">Últimas actualizaciones</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
@@ -109,7 +107,7 @@
     <script>
         window.onload = function () {
             llenarMenu();
-            crearVersiones();
+            //crearVersiones();
 
             document.querySelector('[data-bs-target="#staticBackdrop"]').addEventListener('click', function () {
                 versionesModal();

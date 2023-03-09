@@ -36,6 +36,7 @@
         @*Valor en minutos del tiempo de bloqueo para recuperacion de clave *@
         <input type="hidden" id="txtminutosRecuperacionPass" value="60">
         <input type="hidden" id="txtEnRut" value="0" />
+        <input type="hidden" id="textEnTok" value="0"/>
         <div class="row">
             <div class="col text-center">
             <h4 class="RecText">Actualización de Contraseña</h4>
@@ -96,6 +97,9 @@
 
             var txtEnRut = document.getElementById('txtEnRut');
             txtEnRut.value = rut;
+
+            var textEnTok = document.getElementById('textEnTok');
+            textEnTok.value = token;
 
             console.log('rut', rut);
             console.log('token', token);

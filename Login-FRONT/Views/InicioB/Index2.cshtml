@@ -1,0 +1,119 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Grupo Cygnus | Sistemas</title>
+    <link rel="icon" type="image/png" href="~/Content/images/unnamed.png" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/themeCygnus/css/cygnus.css" rel="stylesheet" />
+
+    <!--<link href="~/Content/Site.css" rel="stylesheet" />-->
+    <!--<link href="~/Content/layout.css"/>-->
+    @*<link href="~/Content/bootstrap.min_new.css" rel="stylesheet" />*@
+    @*<link href="~/css/login.css" rel="stylesheet" />*@
+    @*<link href="~/Content/bootstrap.css"/>*@
+
+
+
+    <script src="~/js/cygnus-base.js"></script>
+    <script src="~/js/route.js"></script>
+    <script src="~/Content/js/bootstrap.bundle.min.js"></script>
+
+
+</head>
+<header>
+    <div class="header-container">
+        <div>
+            @*<button type="button" class="btn-outline-success">
+            Bienvenido, <span id="nombreUsuario"></span>
+            </button>*@
+        </div>
+        <div class="logo-container">
+            <img alt="Grupo Cygnus" src="~/Content/images/logotipoA.png" class="center-block" />
+        </div>
+
+    </div>
+</header>
+
+<body>
+    @*<input type="hidden" id="rut" name="rut" value="@ViewBag.rutUsuario" />*@
+    <input type="hidden" id="usr" name="usr" value="@ViewBag.usrUsuario" />
+    @* <input type="hidden" id="uxs" name="uxs" value="@ViewBag.uxsUsuario" />*@
+    @*<input type="hidden" id="ulegajo" name="ulegajo" value="@ViewBag.legajoUsuario" />*@
+    <input type="hidden" id="nombre" name="nombre" value="@ViewBag.nomUsuario" />
+    @*<input type="hidden" id="token" name="token" value="@ViewBag.tokUsuario" />
+    <input type="hidden" id="ucta" name="ucta" value="@ViewBag.ctaUsuario" />*@
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9">
+                <button type="button" class="btn-outline-success" style="border:none; background:none; color:grey;">
+                    BIENVENIDO, <span id="nombreUsuario" style:"font-weight:bold;"></span>
+                </button>
+                <div class="row paddingTop" id="botones">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card" style="background-color:#D5D4D48F; border: 1px solid #ccc; box-shadow: 0px 2px 4px #ddd; ">
+                            <div class="card-header" id="ultimasVersiones">
+                            </div>
+                        </div>
+
+                        <div class="col text-center">
+                            <a href="#" class="btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header ">
+                    <h5 class="modal-title" id="staticBackdropLabel">Últimas actualizaciones</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                </div>
+                <div class="modal-body">
+                    <div class="card-headerM" id="ultimasVersionesMod">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="d-flex justify-content-center flex-wrap align-items-center bg-light footer">
+        <img alt="Grupo Cygnus" src="~/Content/images/logotipoA.png" class="logo" />
+        <p class="posicion fs-5 px-3  pt-3 text-muted">Argomedo 302 Santiago</p>
+        <p class="posicion fs-5 px-3  pt-3 text-muted">+56 2 2733 7500</p>
+        <p class="posicion fs-5 px-3  pt-3 text-muted">contacto@cygnus.cl</p>
+        <p class="copy fs-5 px-3  pt-3 text-muted">Grupo Cygnus2012 &copy; Todos Los Derechos Reservados</p>
+    </footer>
+
+    <script>
+        window.onload = function () {
+            llenarMenu();
+            crearVersiones();
+
+            document.querySelector('[data-bs-target="#staticBackdrop"]').addEventListener('click', function () {
+                versionesModal();
+            });
+        };
+
+    </script>
+</body>
+

@@ -68,14 +68,14 @@
 }
 
 .card-subtitle {
-    padding-top: 25px;
+    padding-top: 27px;
     float: initial !important;
-    font-size: 0.86rem !important;
-    margin-top: -2.375rem !important;
+    font-size: 0.80rem !important;
+    margin-top: -2.975rem !important;
 }
 
 .footer {
-    position: initial;
+    position: absolute;
     bottom: 0px;
     margin-top:14px;
     width: -webkit-fill-available;
@@ -162,8 +162,8 @@
 }
 
 .btn-close {
-    margin-left: 113px;
-    margin-right: -134px;
+    margin-left: 259px;
+    margin-right: -283px;
     margin-top: -1px !important;
     background-color: transparent;
     appearance: none;
@@ -204,7 +204,7 @@
 
 .card {
     position: relative !important;
-    margin-top:14% !important;
+    margin-top:20px !important;
     display: -ms-flexbox !important;
     display: flex !important;
     -ms-flex-direction: column !important;
@@ -218,15 +218,19 @@
 }
 
 .card-header {
-    padding: 1.75rem 1.25rem !important;
+    padding: 1.20rem 1.20rem !important;
     margin-bottom: 0 !important;
     background-color: rgba(0,0,0,.03) !important;
     border-bottom: 1px solid rgb(20 19 19) !important;
+    /*padding-left: 5px !important;
+    padding-right: 5px !important;
+    padding-bottom: 5px !important;
+    padding-top: 10px !important;*/
 }
 
 .card-text:last-child {
-    margin-bottom: -11px !important;
-    font-size: 0.99rem !important;
+    margin-bottom: -20px !important;
+    font-size: 0.79rem !important;
     margin-top: 4px;
 }
 

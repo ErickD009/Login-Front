@@ -39,6 +39,26 @@
     width:15%;
 }
 
+#alertPass {
+    position: relative !important;
+    margin-top: 10px !important;
+    text-align: center !important;
+    width:auto !important;
+}
+
+#msjeAcceso {
+    display: inline-block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 5px !important;
+    background-color: #ffc107 !important;
+    color: #333 !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+}
+
+
+
 .modalheader {
     display: -ms-flexbox !important;
     display: flex !important;
