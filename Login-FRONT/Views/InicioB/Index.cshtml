@@ -33,7 +33,7 @@
             </button>*@
         </div>
         <div class="logo-container">
-            <img alt="Grupo Cygnus" src="~/Content/images/logotipoA.png" class="center-block" />
+            <img alt="Grupo Cygnus" src="~/Content/images/logotipoB.png" class="center-block" />
         </div>
 
     </div>
@@ -52,24 +52,35 @@
         <div class="row">
             <div class="col-md-12">
                 <button type="button" class="btn-outline-success" style="border:none; background:none; color:grey;">
-                    BIENVENIDO, <span id="nombreUsuario" style:"font-weight:bold;"></span>
+                    SALUDOS, <span id="nombreUsuario" style:"font-weight:bold;"></span>
                 </button>
-                <div class="row paddingTop" id="botones">
+                <br >
+                <div class="paddingTop">
+                    
+                    <div class="row">
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-outline-warning btn-block" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                               Últimas Actualizaciones
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row paddingTop" id="botones">
+                        
+                    </div>
                 </div>
             </div>
             @*<div class="col-md-3">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card" style="background-color:#D5D4D48F; border: 1px solid #ccc; box-shadow: 0px 2px 4px #ddd; ">
-                            <div class="card-header" id="ultimasVersiones">
-                            </div>
-                        </div>
-
-                        <div class="col text-center">
-                            <a href="#" class="btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ver más</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="row">
+            <div class="col-md-12">
+            <div class="card" style="background-color:#D5D4D48F; border: 1px solid #ccc; box-shadow: 0px 2px 4px #ddd; ">
+            <div class="card-header" id="ultimasVersiones">
+            </div>
+            </div>
+            <div class="col text-center">
+            <a href="#" class="btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ver más</a>
+            </div>
+            </div>
+            </div>
             </div>*@
         </div>
 
@@ -97,7 +108,7 @@
 
 
     <footer class="d-flex justify-content-center flex-wrap align-items-center bg-light footer">
-        <img alt="Grupo Cygnus" src="~/Content/images/logotipoA.png" class="logo" />
+        <img alt="Grupo Cygnus" src="~/Content/images/logotipoB.png" class="logo" />
         <p class="posicion fs-5 px-3  pt-3 text-muted">Argomedo 302 Santiago</p>
         <p class="posicion fs-5 px-3  pt-3 text-muted">+56 2 2733 7500</p>
         <p class="posicion fs-5 px-3  pt-3 text-muted">contacto@cygnus.cl</p>
@@ -108,12 +119,9 @@
         window.onload = function () {
             llenarMenu();
             //crearVersiones();
-
             document.querySelector('[data-bs-target="#staticBackdrop"]').addEventListener('click', function () {
                 versionesModal();
             });
         };
-
     </script>
 </body>
-

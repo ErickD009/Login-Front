@@ -33,7 +33,7 @@
 
 <body>
     <div>
-        <img alt="Grupo Cygnus" src="~/Content/images/logotipoA.png" class="center-block" />
+        <img alt="Grupo Cygnus" src="~/Content/images/logotipoB.png" class="center-block" />
     </div>
 
     <!-- Login -->
@@ -120,7 +120,7 @@
 
 
     <footer class="d-flex justify-content-center flex-wrap align-items-center bg-light footer">
-        <img alt="Grupo Cygnus" src="~/Content/images/logotipoA.png" class="logo" />
+        <img alt="Grupo Cygnus" src="~/Content/images/logotipoB.png" class="logo" />
         <p class="posicion fs-5 px-3  pt-3 text-muted">Argomedo 302 Santiago</p>
         <p class="posicion fs-5 px-3  pt-3 text-muted">+56 2 2733 7500</p>
         <p class="posicion fs-5 px-3  pt-3 text-muted">contacto@cygnus.cl</p>
@@ -128,6 +128,14 @@
     </footer>
 
     <script>
+
+        document.addEventListener("keypress", function (e) {
+            if (e.key === "Enter" && document.activeElement.tagName !== "INPUT") {
+                e.preventDefault();
+                login_B();
+            }
+        });
+
 
     </script>
 </body>

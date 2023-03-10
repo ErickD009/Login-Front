@@ -1,7 +1,4 @@
-﻿
-
-
-function LoginCygnus(url, data) {
+﻿function LoginCygnus(url, data) {
 
     //alert(url);
     fetch(url, {
@@ -156,37 +153,33 @@ function llenarMenu() {
             if (!response.ok) {
             }
             return response.json();
-
         })
         .then(result => {
             /*console.log(result);*/
             sistemas = result;
 
-
             const container = document.querySelector('.col-md-12');
             const imagenDefault = '/Content/images/gear.png';
-            const exitImagen = '/Content/images/exit-icon.gif';
+            const exitImagen = '/Content/images/exit5.jpg';
+            const colors = ['#17a2b8', '#6ccce0'];
+            let colorIndex = 0;
 
             for (let i = 0; i < sistemas.length; i += 4) {
-
                 const row = document.createElement('div');
                 row.classList.add('row', 'paddingTop');
 
-                const colors = ['btn-secondary', 'btn-success', 'btn-info'];
-
                 for (let j = i; j < i + 4 && j < sistemas.length; j++) {
                     const sistema = sistemas[j];
-
                     const col = document.createElement('div');
                     col.classList.add('col-md-3');
 
                     const btn = document.createElement('button');
                     btn.type = 'button';
-                    btn.classList.add('btn', colors[j % colors.length], 'btn-block');
+                    btn.classList.add('btn', 'btn-block');
+                    btn.style.backgroundColor = colors[colorIndex % colors.length];
                     btn.dataset.url = sistema.siS_URL;
 
                     const img = document.createElement('img');
-
                     if (sistema.siS_ICON_URL) {
                         img.src = sistema.siS_ICON_URL;
                         img.alt = sistema.siS_DESCRIPCION;
@@ -210,284 +203,50 @@ function llenarMenu() {
                     col.appendChild(btn);
                     row.appendChild(col);
 
-                    if (j === sistemas.length - 1) {
-                        btn.setAttribute('id', 'btnVersiones');
-                    }
-
                     btn.addEventListener('click', function () {
                         window.open(this.dataset.url, '_blank');
                     });
                 }
 
                 container.appendChild(row);
+                colorIndex++;
             }
 
-           
             const lastRow = document.createElement('div');
             lastRow.classList.add('row', 'paddingTop');
-
-            
-            const colors = ['btn-dark', 'btn-danger'];
-
-          
-            for (let k = 0; k < 2; k++) {
-                const col = document.createElement('div');
-                col.classList.add('col-md-3');
-
-                const btn = document.createElement('button');
-                btn.type = 'button';
-                btn.classList.add('btn', colors[k % colors.length], 'btn-block');
-
-                const span = document.createElement('span');
-                span.textContent = k === 0 ? 'Versiones' : 'Cerrar sesión';
-
-                btn.appendChild(span);
-                col.appendChild(btn);
-                lastRow.appendChild(col);
-
-               
-                btn.addEventListener('click', function () {
-                    if (k === 0) {
-                       
-                        const versionesModal = new bootstrap.Modal(document.getElementById('staticBackdrop'), {});
-                        versionesModal.show();
-                    } else {
-
-                        window.location.href = urlO;
-                        document.getElementById('uxs').value = '';
-                        document.getElementById('nombre').value = '';
-                    }
-                });
-            }
-
             container.appendChild(lastRow);
 
-            
-        })
+            const col = document.createElement('div');
+            col.classList.add('col-md-3');
 
-}
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.classList.add('btn', 'btn-block', 'btn-danger');
+            const img = document.createElement('img');
+            img.src = exitImagen;
+            img.alt = 'Cerrar Sesión';
+            img.width = 18;
+            img.height = 18;
+            const span = document.createElement('span');
+            span.textContent = 'Cerrar Sesión';
+            const space = document.createElement('span');
+            space.textContent = ' '; 
 
-function llenarMenu2() {
-    var url = host() + 'Usuario/Usuario_Traer_Sistemas';
-    var sistemas = [];
-    var usr = document.getElementById('usr').value;
-    var urlO = origen();
-    const nombreUsuario = document.getElementById('nombre').value;
-    document.getElementById('nombreUsuario').textContent = nombreUsuario;
+            btn.appendChild(img);
+            btn.appendChild(space);
+            btn.appendChild(span);
+            col.appendChild(btn);
+            lastRow.appendChild(col);
 
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    var raw = JSON.stringify({
-        "usR_AUTOID": usr
-    });
-
-    var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-    };
-
-        fetch(url, requestOptions)
-        .then(response => {
-            if (!response.ok) {
-            }
-            return response.json();
+            btn.addEventListener('click', function () {
+                window.location.href = urlO;
+                document.getElementById('usr').value = '';
+                document.getElementById('uxs').value = '';
+                document.getElementById('nombre').value = '';
+            });
 
         })
-        .then(result => {
-        /*console.log(result);*/
-        sistemas = result;
-
-        const container = document.querySelector('.col-md-9');
-        const imagenDefault = '/Content/images/gear.png';
-        const exitImagen = '/Content/images/exit-icon.gif';
-
-        for (let i = 0; i < sistemas.length; i += 3) {
-
-            const row = document.createElement('div');
-            row.classList.add('row', 'paddingTop');
-
-            const colors = ['btn-secondary', 'btn-success', 'btn-info'];
-
-            for (let j = i; j < i + 3 && j < sistemas.length; j++) {
-                const sistema = sistemas[j];
-
-                const col = document.createElement('div');
-                col.classList.add('col-md-4');
-
-                const btn = document.createElement('button');
-                btn.type = 'button';
-                btn.classList.add('btn', colors[j % colors.length], 'btn-block');
-                btn.dataset.url = sistema.siS_URL;
-
-                const img = document.createElement('img');
-
-                if (sistema.siS_ICON_URL) {
-                    img.src = sistema.siS_ICON_URL;
-                    img.alt = sistema.siS_DESCRIPCION;
-                    img.width = 16;
-                    img.height = 16;
-                } else {
-                    img.src = imagenDefault;
-                    img.alt = 'Imagen';
-                    img.width = 16;
-                    img.height = 16;
-                }
-
-
-                const span = document.createElement('span');
-                span.textContent = ' ';
-
-                const text = document.createTextNode(sistema.siS_DESCRIPCION);
-
-                btn.appendChild(img);
-                btn.appendChild(span);
-                btn.appendChild(text);
-                col.appendChild(btn);
-                row.appendChild(col);
-
-                btn.addEventListener('click', function () {
-                    window.open(this.dataset.url, '_blank');
-                });
-            }
-
-
-            container.appendChild(row);
-        }
-
-        const lastRow = document.createElement('div');
-        lastRow.classList.add('row', 'paddingTop');
-
-        const lastCol = document.createElement('div');
-        lastCol.classList.add('col-md-4');
-
-        const btnCerrar = document.createElement('button');
-        btnCerrar.type = 'button';
-        btnCerrar.classList.add('btn', 'btn-danger', 'btn-block');
-
-        const imgCerrar = document.createElement('img');
-        imgCerrar.src = exitImagen;
-        imgCerrar.alt = 'Cerrar sesión';
-        imgCerrar.width = 16;
-        imgCerrar.height = 16;
-
-        const textCerrar = document.createTextNode('Cerrar sesión');
-        const spanCerrar = document.createElement('span');
-        spanCerrar.textContent = ' ';
-
-        btnCerrar.appendChild(imgCerrar);
-        btnCerrar.appendChild(spanCerrar);
-        btnCerrar.appendChild(textCerrar);
-        lastCol.appendChild(btnCerrar);
-        lastRow.appendChild(lastCol);
-        container.appendChild(lastRow);
-
-        btnCerrar.addEventListener('click', function () {
-            window.location.href = urlO;
-            document.getElementById('usr').value = '';
-            document.getElementById('uxs').value = '';
-            document.getElementById('nombre').value = '';
-        });
-
-        
-        /*console.log('sistemas', sistemas);*/
-
-    })
-
-    .catch(error => {
-        console.log('error', error);
-    });
-
 }
-
-//function crearVersiones() {
-
-//    var url = host() + 'Sistema/TraerVersiones';
-//    var versiones = [];
-
-//    var myHeaders = new Headers();
-//    myHeaders.append("Content-Type", "application/json");
-
-//    var raw = JSON.stringify({
-//        "sis_autoid": "0"
-//    });
-
-//    var requestOptions = {
-//        method: 'POST',
-//        headers: myHeaders,
-//        body: raw,
-//        redirect: 'follow'
-//    };
-
-//    fetch(url, requestOptions)
-//        .then(response => {
-//            if (!response.ok) {
-//            }
-//            return response.json();
-
-//        })
-//        .then(result => {
-//            /*console.log(result);*/
-//            versiones = result
-
-//            var ultimasActualizacionesDiv = document.getElementById("ultimasVersiones");
-
-//            ultimasActualizacionesDiv.innerHTML = "";
-
-//            var titulo = document.createElement("h5");
-//            titulo.className = "card-title";
-//            titulo.style = "text-align: center;";
-//            titulo.textContent = "Últimas actualizaciones";
-//            titulo.style.fontWeight = "bold";
-//            ultimasActualizacionesDiv.appendChild(titulo);
-
-//            for (var i = 0; i < versiones.length && i < 3; i++) {
-//                var version = versiones[i];
-
-//                var card = document.createElement("div");
-//                card.className = "card";
-//                card.style = "background-color:#D5D4D48F;";
-
-//                var cardHeader = document.createElement("div");
-//                cardHeader.className = "card-header";
-//                // Agregamos una regla CSS para reducir el padding del cardHeader
-//                cardHeader.style.padding = "10px 10px 5px 10px";
-
-//                var cardTitle = document.createElement("h5");
-//                cardTitle.className = "card-title";
-//                cardTitle.style = "text-align: center;";
-
-//                var fecha = version.ver_fecha.substring(0, 10);
-
-//                var cardSubtitle = document.createElement("h6");
-//                cardSubtitle.className = "card-subtitle";
-//                cardSubtitle.style = "text-align: center;";
-//                cardSubtitle.innerHTML = version.sis_descripcion + "<br>" + version.ver_version + " - Disponible desde : " + fecha;
-//                cardSubtitle.style.marginBottom = "0";
-
-//                var cardText = document.createElement("p");
-//                cardText.className = "card-text text-left";
-//                cardText.innerHTML = version.verdet_detalle_version;
-//                cardText.style.marginTop = "0";
-//                cardText.style.position = "auto";
-//                cardText.style.fontSize = "14px";
-
-//                cardHeader.appendChild(cardTitle);
-//                cardHeader.appendChild(cardSubtitle);
-//                cardHeader.appendChild(cardText);
-//                card.appendChild(cardHeader);
-//                ultimasActualizacionesDiv.appendChild(card);
-//            }
-
-
-//            /*console.log('versiones', versiones)*/
-//        })
-
-//        .catch(error => console.log('error', error));
-
-//}
 
 function versionesModal() {
 
@@ -583,62 +342,73 @@ function versionesModal() {
 }
 
 function ActualizarPass() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var expirationDateString = urlParams.get('expiration');
+    var expirationDate = new Date(expirationDateString);
 
-    var url = host() + 'Usuario/Usuario_Actualizar_Clave'
-    var USR_PASS1 = document.getElementById("txtNewPass").value;
-    var USR_PASS2 = document.getElementById("txtNewPassRep").value;
-    var USR_RUT = document.getElementById("txtEnRut").value;
-    var USR_TOK = document.getElementById("textEnTok").value;
-    var mensaje = document.getElementById("divMensaje3");
-    var mensaje2 = document.getElementById("divMensaje4");
+    if (expirationDate < new Date()) {
+        
+        var mensaje2 = document.getElementById("divMensaje4");
+        mensaje2.innerHTML = "El enlace ha caducado. Por favor solicite un nuevo enlace para cambiar su contraseña.";
+        mensaje2.style.display = "block";
 
-    var passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-
-    if (USR_PASS1 !== USR_PASS2) {
-        mensaje.innerHTML = "Las contraseñas no coinciden, intente nuevamente.";
-        mensaje.style.display = "block";
-        mensaje2.style.display = "none";
-    } else if (!passRegex.test(USR_PASS1)) {
-        mensaje.innerHTML = "La contraseña debe tener al menos 8 caracteres, contener números y letras.";
-        mensaje.style.display = "block";
-        mensaje2.style.display = "none";
     } else {
-        var USR_PASS = USR_PASS1;
-        mensaje.style.display = "none";
-        console.log(USR_RUT)
+        
+        var url = host() + 'Usuario/Usuario_Actualizar_Clave';
+        var USR_PASS1 = document.getElementById("txtNewPass").value;
+        var USR_PASS2 = document.getElementById("txtNewPassRep").value;
+        var USR_RUT = document.getElementById("txtEnRut").value;
+        var mensaje = document.getElementById("divMensaje3");
+        var mensaje2 = document.getElementById("divMensaje4");
 
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+        var passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
-        var raw = JSON.stringify({
-            "usR_PASSWORD": USR_PASS,
-            "usR_RUT": USR_RUT
-        });
+        if (USR_PASS1 !== USR_PASS2) {
+            mensaje.innerHTML = "Las contraseñas no coinciden, intente nuevamente.";
+            mensaje.style.display = "block";
+            mensaje2.style.display = "none";
+        } else if (!passRegex.test(USR_PASS1)) {
+            mensaje.innerHTML = "La contraseña debe tener al menos 8 caracteres, contener números y letras.";
+            mensaje.style.display = "block";
+            mensaje2.style.display = "none";
+        } else {
+            var USR_PASS = USR_PASS1;
+            mensaje.style.display = "none";
+            console.log(USR_RUT)
 
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-        };
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
 
-        fetch(url, requestOptions)
-            .then(response => {
-                if (response.ok) {
-                    mensaje2.innerHTML = "La contraseña se actualizó correctamente.";
-                    mensaje2.className = "col-md-12 alert alert-success";
-                    mensaje2.style.display = "block";
-                } else {
-                    mensaje2.innerHTML = "Error al actualizar la contraseña."
-                    mensaje2.style.display = "block";
-                }
-            })
-            .then(result => console.log(result))
-            .catch(error => {
-                mensaje2.innerHTML = "Error al conectar con el servicio. Intente nuevamente más tarde.";
-                mensaje2.style.display = "block";
-                console.log('error', error)
+            var raw = JSON.stringify({
+                "usR_PASSWORD": USR_PASS,
+                "usR_RUT": USR_RUT
             });
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            fetch(url, requestOptions)
+                .then(response => {
+                    if (response.ok) {
+                        mensaje2.innerHTML = "La contraseña se actualizó correctamente.";
+                        mensaje2.className = "col-md-12 alert alert-success";
+                        mensaje2.style.display = "block";
+                    } else {
+                        mensaje2.innerHTML = "Error al actualizar la contraseña."
+                        mensaje2.style.display = "block";
+                    }
+                })
+                .then(result => console.log(result))
+                .catch(error => {
+                    mensaje2.innerHTML = "Error al conectar con el servicio. Intente nuevamente más tarde.";
+                    mensaje2.style.display = "block";
+                    console.log('error', error)
+                });
+        }
     }
 }
 
@@ -774,6 +544,7 @@ function recuperarPass() {
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
         document.getElementById("divMensaje2").innerHTML = "Datos ingresados inválidos.<br>Deberá volver a intentarlo dentro de " + minutosRecuperacionPass + " minutos";
+        document.getElementById("divMensaje2").className = "col-md-12 alert alert-danger";
         document.getElementById("divMensaje2").style.display = "block";
 
 
@@ -785,8 +556,8 @@ function recuperarPass() {
 
     } else {
         //console.log("Los valores coinciden");
-        var divMensaje2 = document.getElementById("divMensaje1");
-        divMensaje2.style.display = "none";
+        //var divMensaje2 = document.getElementById("divMensaje1");
+        //divMensaje2.style.display = "none";
 
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -806,7 +577,7 @@ function recuperarPass() {
         fetch(url, requestOptions)
             .then(response => {
                 if (response.ok) {
-
+                    console.log(response);
                     document.getElementById("divMensaje2").innerHTML = "Se le ha enviado un correo electrónico con las instrucciones para la recuperación.";
                     document.getElementById("divMensaje2").className = "col-md-12 alert alert-success";
                     document.getElementById("divMensaje2").style.display = "block";
